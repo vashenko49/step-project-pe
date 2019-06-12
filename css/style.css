@@ -1,0 +1,116 @@
+html{
+    overflow: hidden;
+}
+body{
+    perspective: 1px;
+    transform-style: preserve-3d;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-size: 18px;
+    font-family: "Montserrat",sans-serif;
+}
+.container{
+    width: 1075px;
+    margin: 0 auto;
+}
+.slogan-on-page{
+    font-size: 60px;
+    font-weight: bold;
+    color: #14afca;
+    text-transform: uppercase;
+}
+.pre-slogan-on_page{
+    font-size: 18px;
+    color: #424f57;
+    margin-bottom: 37px;
+}
+.text-in-page{
+    font-size: 15px;
+    color: #767e83;
+}
+/*region hexagon*/
+#hexagon {
+    width: 58px;
+    height: 33px;
+    background: #18cfab;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#hexagon:before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 29px solid transparent;
+    border-right: 29px solid transparent;
+    border-bottom: 15px solid #18cfab;
+}
+#hexagon:after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 29px solid transparent;
+    border-right: 29px solid transparent;
+    border-top: 15px solid #18cfab;
+}
+
+.icon{
+    font-size: 40px;
+    color: white;
+}
+/*End region hexagon*/
+/*!*Region Header*/
+/*-------------------------------*!*/
+.header-block{
+    padding-top: 15px;
+    height: 600px;
+}
+/*!*End Region Header*/
+/*-------------------------------*!*/
+
+
+
+/*!*Region with parallax background instrument*/
+/*---------------------------------*!*/
+.header-block:before{
+    background: url(../img/sections_background/section-1.jpg) 50% 50%/cover;
+    height: inherit;
+    z-index: -3;
+}
+
+.static-bg-block{
+    background-size: cover;
+    z-index: 2;
+    position: relative;
+}
+.parallax-bg-block{
+    perspective: 1px;
+    transform-style: preserve-3d;
+    position: relative;
+    box-sizing: border-box;
+}
+.parallax-bg-block:before{
+    content:"";
+    width: 100vw;
+    top:0;
+    left:0;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    z-index: -1;
+    transform:translateZ(-1px) scale(3.6);
+}
+
+/*!*!*End region with parallax background instrument*!*/
+/*!*------------------------------------------------------------------------*!*!*/
+
+
