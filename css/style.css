@@ -9,26 +9,26 @@ body{
     overflow-y: scroll;
     font-size: 18px;
     font-family: "Montserrat",sans-serif;
+
 }
 .container{
-    width: 1075px;
+    width: 1160px;
     margin: 0 auto;
 }
-.slogan-on-page{
-    font-size: 60px;
-    font-weight: bold;
-    color: #14afca;
-    text-transform: uppercase;
+.label-section{
+    font-size: 36px;
+    font-weight: lighter;
+    color: #4e4e4e;
 }
-.pre-slogan-on_page{
-    font-size: 18px;
-    color: #424f57;
-    margin-bottom: 37px;
+.double-lines{
+    width: 75px;
+    height: 6px;
+    border:1px solid transparent;
+    border-top-color: #18cfab;
+    border-bottom-color: #18cfab;
+    transform: skew(50deg);
 }
-.text-in-page{
-    font-size: 15px;
-    color: #767e83;
-}
+
 /*region hexagon*/
 #hexagon {
     width: 58px;
@@ -62,31 +62,253 @@ body{
     border-top: 15px solid #18cfab;
 }
 
+
+/*End region hexagon*/
+
+/*!*Region home*/
+/*-------------------------------*!*/
 .icon{
     font-size: 40px;
     color: white;
 }
-/*End region hexagon*/
-/*!*Region Header*/
-/*-------------------------------*!*/
-.header-block{
-    padding-top: 15px;
-    height: 600px;
+.logo{
+    display: flex;
+    align-items: center;
 }
-/*!*End Region Header*/
+.logo-slogan{
+    margin-left: 8px;
+    font-size: 32px;
+    color: #18cfab;
+}
+.logo-slogan-redid{
+    color: white;
+}
+.header-list-item{
+    color: #b8b8b8;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+.header-list-item:hover{
+    color: #18cfab;
+}
+.fa-search{
+    font-size: 16px;
+}
+.header-position{
+    display: flex;
+    justify-content: space-between;
+    align-items: self-start;
+}
+.header-list{
+    max-width: 650px;
+    min-width: 600px;
+    display: flex;
+    justify-content: space-between;
+}
+.header{
+    background-color: rgba(143,145,140,0.5);
+    padding: 46px 0 46px 0;
+    width: 100vw;
+}
+.pre-slogan-redid, .main-slogan,.button{
+    text-transform: uppercase;
+}
+.pre-slogan, .main-slogan, .button {
+    color: white;
+}
+.pre-slogan{
+    font-size: 35px;
+    font-weight: bold;
+}
+.pre-slogan-redid{
+    color: #18cfab;
+}
+.main-slogan{
+    font-size: 79px;
+}
+.next-slogan{
+    font-size: 34px;
+    font-weight: lighter;
+    color: #d4d4d4;
+}
+.button-color-green{
+    background-color: #18cfab;
+    transition: color, border-top-color, background-color 0.5s;
+}
+.button-color-green:hover{
+    background-color: white;
+    color: #18cfab;
+    border-top-color:#18cfab ;
+}
+.button-color-blue{
+    background-color: #00cbf6;
+    transition: color, border-top-color, background-color 0.5s;
+}
+.button-color-blue:hover{
+    background-color: white;
+    border-top-color: #00cbf6;
+    color: #00cbf6;
+}
+.button{
+    display: inline-block;
+    box-sizing: border-box;
+    font-weight: bold;
+    border-radius: 10px;
+    border-top: 5px solid white;
+    padding: 25px 30px;
+}
+.slogan{
+    height: 87%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 35px 140px 38px 201px;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+}
+.button-block{
+    align-self: end;
+}
+.home-block{
+    height: 1015px;
+}
+/*!*End Region home*/
 /*-------------------------------*!*/
+/*region 4 options*/
+.four-options{
+    height: 375px;
+    background-color: #fff;
+    display: grid;
+    grid-template-rows: inherit;
+    grid-template-columns: repeat(4 , 1fr);
+}
+.four-options-item{
+    border-top: 10px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.four-options-item:nth-child(even){
+    background-color: #18cfab;
+    border-top-color: #ffffff;
+    color: white;
+    transition: color, border-top-color, background-color 0.5s;
+}
+.four-options-item:nth-child(even):hover{
+    background-color: white;
+    border-top-color: #18cfab;
+    color: #18cfab;
+}
+.four-options-item:nth-child(odd){
+    background-color: #1c2a33;
+    border-top-color: #18cfab;
+    color: #18cfab;
+    transition: color, border-top-color, background-color 0.5s;
+}
+.four-options-item:nth-child(odd):hover{
+    background-color: white;
+    border-top-color: #1c2a33;
+    color: #1c2a33;
+}
+.item-icon{
+    font-size: 80px;
+    margin-bottom: 35px;
+}
+.item-text{
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+/*end region 4 options*/
+/**region service*/
+
+.service{
+    margin: 0 auto;
+    padding-top: 75px;
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    grid-template-rows: 48px 48px 74px 1fr;
+    grid-template-areas: "service-label service-label"
+    "service-double-lines service-double-lines"
+    "service-items service-items"
+    "service-information-img service-information-text";
+    justify-items: center;
+    align-items: center;
+    grid-column-gap: 15px;
+    grid-row-gap: 25px ;
+}
+.service-label{
+    grid-area: service-label;
+}
+.service-double-lines{
+    grid-area: service-double-lines;
+}
+.service-items{
+    grid-area: service-items;
+    width: 100%;
+    display: flex;
+    border: 1px solid transparent;
+    border-top-color: #ebebeb ;
+    border-bottom-color: #ebebeb ;
+}
+.service-items-link{
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #717171;
+    width: calc(100% / 6);
+    padding: 26px 0 26px 0;
+    background-color: #f8fcfe;
+    position: relative;
+}
+.service-items-link:first-child{
+    border: 1px solid transparent;
+    border-left-color: #ebebeb ;
+    border-right-color: #ebebeb;
+}
+.service-items-link:nth-child(n+1){
+    border-right: 1px solid #ebebeb;
+}
+.service-items-link-check{
+    background-color: #18cfab;
+    color: white;
+}
+.service-items-link-check:after{
+    content: '';
+    display: inline-block;
+    border: 12px solid transparent;
+    border-top-color: #18cfab;
+    position: absolute;
+    top: calc(100% + 11px);
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 3;
+
+}
+#service-information-img{
+    grid-area: service-information-img;
+    object-fit: cover;
+    width: 194px;
+    height: 139px;
+}
+#service-information-text{
+    grid-area: service-information-text;
+}
 
 
+/**end region service/
 
 /*!*Region with parallax background instrument*/
 /*---------------------------------*!*/
-.header-block:before{
+.home-block:before{
     background: url(../img/sections_background/section-1.jpg) 50% 50%/cover;
     height: inherit;
     z-index: -3;
 }
 
 .static-bg-block{
+    background-color: white;
     background-size: cover;
     z-index: 2;
     position: relative;
