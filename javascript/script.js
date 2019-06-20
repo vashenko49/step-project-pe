@@ -1,26 +1,32 @@
+window.onload = function () {
+    let firstElementChild = workBlockItems.firstElementChild;
+    firstElementChild.classList.add('work-block-link-check');
+    addImages(currentCategory);
+
+};
 const ourServicesItemsInformation = [
     {
-      img:"img/web_design/web-design1.jpg",
+      img:"img/web_design/web-design%20(1).jpg",
       text:"ITEM NUMBER1 NUMBER Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     },
     {
-        img:"img/web_design/web-design2.jpg",
+        img:"img/web_design/web-design%20(2).jpg",
         text:"ITEM NUMBER2 NUMBER Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     },
     {
-        img:"img/web_design/web-design3.jpg",
+        img:"img/web_design/web-design%20(3).jpg",
         text:"ITEM NUMBER3 NUMBER Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     },
     {
-        img:"img/web_design/web-design4.jpg",
+        img:"img/web_design/web-design%20(4).jpg",
         text:"ITEM NUMBER4 NUMBER Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     },
     {
-        img:"img/web_design/web-design5.jpg",
+        img:"img/web_design/web-design%20(5).jpg",
         text:"ITEM NUMBER5 NUMBER Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     },
     {
-        img:"img/web_design/web-design6.jpg",
+        img:"img/web_design/web-design%20(6).jpg",
         text:"ITEM NUMBE6 NUMBER Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     }
 ];
@@ -44,156 +50,28 @@ ourServices.onclick = function (event) {
 
 };
 
+////////////////////////////////////
 
-let  graphicDesign=['img/graphic_design/graphic-design1.jpg',
-    'img/graphic_design/graphic-design2.jpg',
-    'img/graphic_design/graphic-design3.jpg',
-    'img/graphic_design/graphic-design4.jpg',
-    'img/graphic_design/graphic-design5.jpg',
-    'img/graphic_design/graphic-design6.jpg',
-    'img/graphic_design/graphic-design7.jpg',
-    'img/graphic_design/graphic-design8.jpg',
-    'img/graphic_design/graphic-design9.jpg',
-    'img/graphic_design/graphic-design10.jpg',
-    'img/graphic_design/graphic-design11.jpg',
-    'img/graphic_design/graphic-design12.jpg',
-    'img/graphic_design/graphic-design1.jpg',
-    'img/graphic_design/graphic-design2.jpg',
-    'img/graphic_design/graphic-design3.jpg',
-    'img/graphic_design/graphic-design4.jpg',
-    'img/graphic_design/graphic-design5.jpg',
-    'img/graphic_design/graphic-design6.jpg',
-    'img/graphic_design/graphic-design7.jpg',
-    'img/graphic_design/graphic-design8.jpg',
-    'img/graphic_design/graphic-design9.jpg',
-    'img/graphic_design/graphic-design10.jpg',
-    'img/graphic_design/graphic-design11.jpg',
-    'img/graphic_design/graphic-design12.jpg',
-    'img/graphic_design/graphic-design1.jpg',
-    'img/graphic_design/graphic-design2.jpg',
-    'img/graphic_design/graphic-design3.jpg',
-    'img/graphic_design/graphic-design4.jpg',
-    'img/graphic_design/graphic-design5.jpg',
-    'img/graphic_design/graphic-design6.jpg',
-    'img/graphic_design/graphic-design7.jpg',
-    'img/graphic_design/graphic-design8.jpg',
-    'img/graphic_design/graphic-design9.jpg',
-    'img/graphic_design/graphic-design10.jpg',
-    'img/graphic_design/graphic-design11.jpg',
-    'img/graphic_design/graphic-design12.jpg',];
-let  webDesign=['img/web_design/web-design1.jpg',
-    'img/web_design/web-design2.jpg',
-    'img/web_design/web-design3.jpg',
-    'img/web_design/web-design4.jpg',
-    'img/web_design/web-design5.jpg',
-    'img/web_design/web-design6.jpg',
-    'img/web_design/web-design7.jpg',
-    'img/web_design/web-design1.jpg',
-    'img/web_design/web-design2.jpg',
-    'img/web_design/web-design3.jpg',
-    'img/web_design/web-design4.jpg',
-    'img/web_design/web-design5.jpg',
-    'img/web_design/web-design6.jpg',
-    'img/web_design/web-design7.jpg',
-    'img/web_design/web-design1.jpg',
-    'img/web_design/web-design2.jpg',
-    'img/web_design/web-design3.jpg',
-    'img/web_design/web-design4.jpg',
-    'img/web_design/web-design5.jpg',
-    'img/web_design/web-design6.jpg',
-    'img/web_design/web-design7.jpg',
-    'img/web_design/web-design1.jpg',
-    'img/web_design/web-design2.jpg',
-    'img/web_design/web-design3.jpg',
-    'img/web_design/web-design4.jpg',
-    'img/web_design/web-design5.jpg',
-    'img/web_design/web-design6.jpg',
-    'img/web_design/web-design7.jpg',
-    'img/web_design/web-design1.jpg',
-    'img/web_design/web-design2.jpg',
-    'img/web_design/web-design3.jpg',
-    'img/web_design/web-design4.jpg',
-    'img/web_design/web-design5.jpg',
-    'img/web_design/web-design6.jpg',
-    'img/web_design/web-design7.jpg',
-    'img/web_design/web-design1.jpg'];
-let  landingPages=['img/landing_page/landing-page1.jpg',
-    'img/landing_page/landing-page2.jpg',
-    'img/landing_page/landing-page3.jpg',
-    'img/landing_page/landing-page4.jpg',
-    'img/landing_page/landing-page5.jpg',
-    'img/landing_page/landing-page6.jpg',
-    'img/landing_page/landing-page7.jpg',
-    'img/landing_page/landing-page1.jpg',
-    'img/landing_page/landing-page2.jpg',
-    'img/landing_page/landing-page3.jpg',
-    'img/landing_page/landing-page4.jpg',
-    'img/landing_page/landing-page5.jpg',
-    'img/landing_page/landing-page6.jpg',
-    'img/landing_page/landing-page7.jpg',
-    'img/landing_page/landing-page1.jpg',
-    'img/landing_page/landing-page2.jpg',
-    'img/landing_page/landing-page3.jpg',
-    'img/landing_page/landing-page4.jpg',
-    'img/landing_page/landing-page5.jpg',
-    'img/landing_page/landing-page6.jpg',
-    'img/landing_page/landing-page7.jpg',
-    'img/landing_page/landing-page1.jpg',
-    'img/landing_page/landing-page2.jpg',
-    'img/landing_page/landing-page3.jpg',
-    'img/landing_page/landing-page4.jpg',
-    'img/landing_page/landing-page5.jpg',
-    'img/landing_page/landing-page6.jpg',
-    'img/landing_page/landing-page7.jpg',
-    'img/landing_page/landing-page1.jpg',
-    'img/landing_page/landing-page2.jpg',
-    'img/landing_page/landing-page3.jpg',
-    'img/landing_page/landing-page4.jpg',
-    'img/landing_page/landing-page5.jpg',
-    'img/landing_page/landing-page6.jpg',
-    'img/landing_page/landing-page7.jpg',
-    'img/landing_page/landing-page1.jpg'];
-let  wordpress=['img/wordpress/wordpress1.jpg',
-    'img/wordpress/wordpress2.jpg',
-    'img/wordpress/wordpress3.jpg',
-    'img/wordpress/wordpress4.jpg',
-    'img/wordpress/wordpress5.jpg',
-    'img/wordpress/wordpress6.jpg',
-    'img/wordpress/wordpress7.jpg',
-    'img/wordpress/wordpress8.jpg',
-    'img/wordpress/wordpress9.jpg',
-    'img/wordpress/wordpress10.jpg',
-    'img/wordpress/wordpress1.jpg',
-    'img/wordpress/wordpress2.jpg',
-    'img/wordpress/wordpress3.jpg',
-    'img/wordpress/wordpress4.jpg',
-    'img/wordpress/wordpress5.jpg',
-    'img/wordpress/wordpress6.jpg',
-    'img/wordpress/wordpress7.jpg',
-    'img/wordpress/wordpress8.jpg',
-    'img/wordpress/wordpress9.jpg',
-    'img/wordpress/wordpress10.jpg',
-    'img/wordpress/wordpress1.jpg',
-    'img/wordpress/wordpress2.jpg',
-    'img/wordpress/wordpress3.jpg',
-    'img/wordpress/wordpress4.jpg',
-    'img/wordpress/wordpress5.jpg',
-    'img/wordpress/wordpress6.jpg',
-    'img/wordpress/wordpress7.jpg',
-    'img/wordpress/wordpress8.jpg',
-    'img/wordpress/wordpress9.jpg',
-    'img/wordpress/wordpress10.jpg',
-    'img/wordpress/wordpress1.jpg',
-    'img/wordpress/wordpress2.jpg',
-    'img/wordpress/wordpress3.jpg',
-    'img/wordpress/wordpress4.jpg',
-    'img/wordpress/wordpress5.jpg',
-    'img/wordpress/wordpress6.jpg',];
+function getSrcImgInFolder(folder,nameImg){
+    let array = [];
+    for(let i =1;i<=36;i++){
+        array[i]=`img/${folder}/${nameImg}%20(${i}).jpg`;
+    }
+    return array;
+}
+
+let allImg = {
+    "1":graphicDesign = getSrcImgInFolder('graphic_design','graphic-design'),
+    '2':landingPage = getSrcImgInFolder('landing_page','landing-page'),
+    '3':webDesign = getSrcImgInFolder('web_design','web-design'),
+    '4':wordpress = getSrcImgInFolder('wordpress','wordpress')
+};
 
 let workBlockButton = document.getElementById('work-block-button');
-
 let uploadingPictures = document.getElementById('uploading-pictures');
 let workBlockItems = document.getElementById('work-block-items');
+
+let currentCategory =0;
 
 workBlockItems.onclick = function (event) {
     let target =event.target;
@@ -206,5 +84,109 @@ workBlockItems.onclick = function (event) {
         })
     }
     target.classList.add('work-block-link-check');
+    removeChild(uploadingPictures);
+    workBlockButton.style.display = "flex";
+    currentCategory = +target.dataset.number;
+    addImages(currentCategory);
+};
+function removeChild(element) {
+    for(let i =0; i<element.childElementCount;){
+        element.children[i].remove();
+    }
+}
+//фильтрация картинок по категории, прии изм категориии другие будут чиститься
+function filter(category) {
+    let countRemoveElement =0;
+    if(category===0){
+        return;
+    }
+    else{
+        let children = uploadingPictures.children;
+        //с конца потому что елементы удаляються и размер коллекции уменьшиваеться
+        for(let i = children.length-1;i>-1;i--){
+            if(+children[i].dataset.number!==category){
+                children[i].remove();
+                countRemoveElement++;
+            }
+        }
+    }
+    return countRemoveElement;
+}
+
+//проверяет  наличие картинки
+function isImgInBlock(src) {
+    let trigger = true;
+    let children = uploadingPictures.children;
+
+    for(let i =0;i<children.length;i++){
+        if(children[i].src.includes(src)){
+            trigger=false;
+        }
+    }
+    return trigger;
+
+}
+
+//создает картинку
+function getImg(numberCategory,src) {
+    let htmlImageElement = document.createElement('img');
+    htmlImageElement.alt = 'not found img';
+    htmlImageElement.dataset.number = numberCategory;
+    htmlImageElement.src = src;
+    return htmlImageElement;
+}
+
+//конечная функция добавденния карнтинки возращает node елемента
+function addImg(numberCategory) {
+    let newSrc = 'none';
+    for(let i =1; i<=allImg[numberCategory.toString()].length;i++){
+        if(isImgInBlock(allImg[numberCategory.toString()][i])){
+            newSrc = allImg[numberCategory.toString()][i];
+            break;
+        }
+    }
+
+    return  getImg(numberCategory,newSrc);
+}
+
+
+function addImages(category) {
+    //оставить только 1 категорию стальные удалить
+    if (category===0){
+        categoryAll();
+    }
+    else {
+        let remove = filter(category);
+        for (let i =0;i<12-remove;i++){
+            uploadingPictures.append(addImg(category));
+        }
+    }
+
+
+}
+//отработка кнопки загрузки картинок
+let countNumberWork =0;
+workBlockButton.onclick = function () {
+    if(countNumberWork===0) {
+        addImages(currentCategory);
+        countNumberWork++;
+    }
+    else if (countNumberWork===1) {
+        addImages(currentCategory);
+        workBlockButton.style.display = "none";
+        countNumberWork=0;
+    }
 };
 
+//нужно запилить
+//function randomNumber(max) {
+//    return Math.floor(Math.random() * (max));
+//}
+
+function categoryAll() {
+    for(let i =1;i<=4;i++){
+        for (let j = 1; j<=4;j++){
+            uploadingPictures.append(addImg(i));
+        }
+    }
+}
