@@ -1,9 +1,8 @@
 window.onload = function () {
-    let firstElementChild = workBlockItems.firstElementChild;
-    firstElementChild.classList.add('work-block-link-check');
+    $("[data-paroller-factor]").paroller();
     addImages(currentCategory);
-
 };
+
 const ourServicesItemsInformation = [
     {
       img:"img/web_design/web-design%20(1).jpg",
@@ -46,8 +45,7 @@ ourServices.onclick = function (event) {
   target.classList.add('service-items-link-check');
   document.getElementById('service-information-img').src = ourServicesItemsInformation[+target.dataset.number].img;
   document.getElementById('service-information-text').innerHTML =ourServicesItemsInformation[+target.dataset.number].text;
-
-
+  event.preventDefault();
 };
 
 ////////////////////////////////////
@@ -112,7 +110,7 @@ function filter(category) {
     }
     return countRemoveElement;
 }
-
+//проверь меня каак
 //проверяет  наличие картинки
 function isImgInBlock(src) {
     let trigger = true;
@@ -135,7 +133,6 @@ function getImg(numberCategory,src) {
     htmlImageElement.src = src;
     return htmlImageElement;
 }
-
 //конечная функция добавденния карнтинки возращает node елемента
 function addImg(numberCategory) {
     let newSrc = 'none';
@@ -184,7 +181,7 @@ workBlockButton.onclick = function () {
 //}
 
 function categoryAll() {
-    for(let i =1;i<=4;i++){
+    for(let i =1;i<=3;i++){
         for (let j = 1; j<=4;j++){
             uploadingPictures.append(addImg(i));
         }
