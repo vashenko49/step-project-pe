@@ -5,7 +5,15 @@ let ourServices,
     workBlockItems,
     allImg,
     dataSetNumberCurrent =0,
-    countNumberWork =0;
+    countNumberWork =0,
+    containerLoad,
+    selectPhoto,
+    descriptionPerson,
+    namePerson,
+    specialtyPerson,
+    slider,
+    shiftToLeft,
+    shiftToRight;
 
 //массив объектов для service block
 const ourServicesItemsInformation = [
@@ -33,12 +41,65 @@ const ourServicesItemsInformation = [
         img:"img/web_design/web-design%20(6).jpg",
         text:"ITEM NUMBE6 NUMBER Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     }
-];
+],
+    informationAboutPeople=[/*0-specialtyPerson,1-namePerson,3-descriptionPerson,4-src*/
+        [
+            'UX Designer',
+            'Hasan Ali',
+            'Integer dignissim, augue tempus ultricies luctus, quam dui laoreet sem, non dictum odio nisi quis massa. Morbi pulvinar odio eget aliquam facilisis. Tempus ultricies luctus, quam dui laoreet sem, non dictum odio nisi quis massa. Morbi pulvinar odio eget aliquam facilisis.',
+            "img/what_people_say_about/person%20(1).jpg"
+        ],[
+            'Frond End',
+            "Jon Fob",
+            "In software engineering, the terms front end and back end refer to the separation of concerns between the presentation layer, and the data access layer of a piece of software, or the physical infrastructure or hardware.",
+            "img/what_people_say_about/person%20(2).jpg"
+        ],[
+            'Bob Marty',
+            'Full Stack',
+            'In computing, a solution stack or software stack is a set of software subsystems or components needed to create a complete platform such that no additional software is needed to support applications. Applications are said to "run on" or "run on top of" the resulting platform.',
+            "img/what_people_say_about/person%20(3).jpg"
+        ],[
+            'Bob Bobovich',
+            'Back End',
+            'The front-end is also referred to as the client-side and is sometimes considered "web design". The back-end of the web industry is often called the server-side. Often when someone says they\'re a "web developer" they\'re saying they work on the back-end of sites.',
+            "img/what_people_say_about/person%20(4).jpg"
+        ],[
+            'Justin Buber',
+            "Java developer",
+            "JavaScript, often abbreviated as JS, is a high-level, interpreted programming language that conforms to the ECMAScript specification. JavaScript has curly-bracket syntax, dynamic typing, prototype-based object-orientation, and first-class functions.",
+            "img/what_people_say_about/person%20(5).jpg"
+        ],[
+            'Fog Noc',
+            "Python developer",
+            'Python is an interpreted, high-level, general-purpose programming language. Created by Guido van Rossum and first released in 1991, Python\'s design philosophy emphasizes code readability with its notable use of significant whitespace',
+            "img/what_people_say_about/person%20(6).jpg"
+        ],[
+            'Noc Gogo',
+            "MySQL",
+            'MySQL is an open-source relational database management system. Its name is a combination of "My", the name of co-founder Michael Widenius\'s daughter, and "SQL", the abbreviation for Structured Query Language.',
+            "img/what_people_say_about/person%20(7).jpg"
+        ],[
+            'Bad Boy',
+            'Client',
+            'A client is a piece of computer hardware or software that accesses a service made available by a server. The server is often on another computer system, in which case the client accesses the service by way of a network.',
+            "img/what_people_say_about/person%20(8).jpg"
+        ],[
+            'Nic Bro',
+            'C# developer',
+            'C# is a general-purpose, multi-paradigm programming language encompassing strong typing, lexically scoped, imperative, declarative, functional, generic, object-oriented, and component-oriented programming disciplines.',
+            "img/what_people_say_about/person%20(9).jpg"
+        ],[
+            'Good Job',
+            'C++',
+            "C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or \"C with Classes\".",
+            "img/what_people_say_about/person%20(10).jpg"
+        ]
+    ];
 
 //генерация путей к картинкам для work-block
-function getSrcImgInFolder(folder,nameImg){
+function getSrcImgInFolder(folder,nameImg,amountImg){
     let array = [];
-    for(let i =0;i<36;i++){
+    for(let i =0;i<amountImg;i++){
         array[i]=`img/${folder}/${nameImg}%20(${i+1}).jpg`;
     }
     return array;
@@ -72,12 +133,13 @@ window.onload = function () {
     workBlockButton = document.getElementById('work-block-button');
     uploadingPictures = document.getElementById('uploading-pictures');
     workBlockItems = document.getElementById('work-block-items');
+    containerLoad = document.getElementById('container-load');
     //массив массивов всех путей к картинкам
     allImg = [
-        getSrcImgInFolder('graphic_design','graphic-design'),
-        getSrcImgInFolder('landing_page','landing-page'),
-        getSrcImgInFolder('web_design','web-design'),
-        getSrcImgInFolder('wordpress','wordpress')
+        getSrcImgInFolder('graphic_design','graphic-design',36),
+        getSrcImgInFolder('landing_page','landing-page',36),
+        getSrcImgInFolder('web_design','web-design',36),
+        getSrcImgInFolder('wordpress','wordpress',36)
     ];
     //region work block
     //событие на выбор категории
@@ -102,19 +164,86 @@ window.onload = function () {
 
     });
     //событие на клик кнопки подгрузки фото
-    workBlockButton.onclick = function () {
-        if(countNumberWork===0) {
-            countNumberWork++;
-        }
-        else {
-            workBlockButton.style.display = "none";
-            countNumberWork=0;
-        }
-        addImages(dataSetNumberCurrent);
-    };
+    workBlockButton.addEventListener('click', function () {
+        workBlockButton.style.display = "none";
+        containerLoad.style.display ='block';
+        let timer = setTimeout(function () {
+            containerLoad.style.display ='none';
+            addImages(dataSetNumberCurrent);
+            if(countNumberWork===0) {
+                workBlockButton.style.display = "flex";
+                countNumberWork++;
+            }
+            else {
+                countNumberWork=0;
+            }
+        },3500);
+    });
     //загрузка фото при первой загрузке фото
     generationAllCategoryImg();
     //end region work block
+
+    /*region what-people-say*/
+    selectPhoto=document.getElementById('select-photo');
+    descriptionPerson=document.getElementById('descriptionPerson');
+    namePerson=document.getElementById('namePerson');
+    specialtyPerson=document.getElementById('specialtyPerson');
+    shiftToRight = document.getElementById('shiftToRight');
+    shiftToLeft =document.getElementById('shiftToLeft');
+    slider = document.getElementById('slider');
+
+    slider.addEventListener('click',function (event) {
+        let target = event.target;
+        if(target.classList.contains('slider-item')) {
+            removeSelectClasses('slider-item', 'slider-item-select');
+            target.classList.add('slider-item-select');
+            updateInformationAboutPerson(+target.dataset.numberPerson)
+        }
+    });
+    shiftToLeft.addEventListener('click',function () {
+        let shift = 0;
+        let activeElement = document.querySelector('.slider-item-select');
+        if(activeElement.previousElementSibling){
+            removeSelectClasses('slider-item', 'slider-item-select');
+            activeElement.previousElementSibling.classList.add('slider-item-select');
+            updateInformationAboutPerson(+activeElement.previousElementSibling.dataset.numberPerson)
+        }
+
+        let timerLeft = setInterval(function () {
+            if(shift>document.querySelector('.direct').offsetWidth/10-4*4.3){
+                clearInterval(timerLeft);
+                return false;
+            }
+            else {
+                slider.scrollLeft-=3;
+                shift+=3;
+            }
+        },20);
+
+    });
+    shiftToRight.addEventListener('click',function () {
+        let activeElement = document.querySelector('.slider-item-select');
+        if(activeElement.nextElementSibling){
+            removeSelectClasses('slider-item', 'slider-item-select');
+            activeElement.nextElementSibling.classList.add('slider-item-select');
+            updateInformationAboutPerson(+activeElement.nextElementSibling.dataset.numberPerson)
+        }
+
+        let shift = 0;
+        let timerLeft = setInterval(function () {
+            if(shift>document.querySelector('.direct').offsetWidth/10+4*2){
+                clearInterval(timerLeft);
+                return false;
+            }
+            else {
+                slider.scrollLeft+=3;
+                shift+=3;
+            }
+        },20);
+    });
+
+    /*end region what-people-say*/
+
 
 };
 //region work block
@@ -220,10 +349,10 @@ function createElement(tag,classesToCss,datasetName, dataset) {
     return element;
 }
 //генерация каждой карточки которая может вращаться
-function generationCard(number,src) {
+function generationCard(category,src) {
     let card = createElement('div',['card']);
 
-    let frontImg = createElement('img',['front'],['number'],[number]);
+    let frontImg = createElement('img',['front'],['number'],[category]);
     frontImg.src = src;
     frontImg.alt='not found';
     card.append(frontImg);
@@ -248,5 +377,28 @@ function generationCard(number,src) {
     card.append(backImg);
     return card;
 }
-
 //end region work block
+
+
+/*region what-people-say*/
+function updateHTMLTEXT(element,index,number) {
+    element.innerHTML = informationAboutPeople[index][number];
+}
+
+function updateInformationAboutPerson(index) {
+    selectPhoto.src=informationAboutPeople[index][3];
+    updateHTMLTEXT(specialtyPerson,index,1);
+    updateHTMLTEXT(namePerson,index,0);
+    updateHTMLTEXT(descriptionPerson,index,2);
+}
+
+function removeSelectClasses(whereFind, classToRemove) {
+    let temp = document.querySelectorAll(`.${whereFind}`);
+    temp.forEach((element)=>{
+        if(element.classList.contains(classToRemove)){
+            element.classList.remove(classToRemove);
+            return element;
+        }
+    })
+}
+/*end region what-people-say*/
