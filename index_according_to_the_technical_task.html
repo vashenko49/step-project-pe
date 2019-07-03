@@ -11,8 +11,8 @@
 </head>
 <body>
     <!--header-->
-    <section class="header-home-block">
-        <header class="header">
+    <header class="header-home-block">
+        <section class="header">
             <div class="container">
                 <div class="logo">
                     <div id="hexagon"><a class="icon" href="#">H</a></div>
@@ -26,12 +26,12 @@
                     <a data-item="4" class="header-list-item" href="#">work</a>
                     <a data-item="5" class="header-list-item" href="#">testimonial</a>
                     <a data-item="6" class="header-list-item" href="#">blog</a>
-                    <a class="header-list-item" href="#">team</a>
+                    <a data-item="7" class="header-list-item" href="#">team</a>
                     <a class="header-list-item" href="#">contact</a>
                     <a class="header-list-item fas fa-search" href="#"></a>
                 </div>
             </div>
-        </header>
+        </section>
         <div data-item-information="0" class="home-block container">
             <h2 class="pre-slogan">The Ham is <span class="pre-slogan-redid">Wordpress theme</span></h2>
             <h1 class="main-slogan">we are creative</h1>
@@ -41,7 +41,7 @@
 
         </div>
 
-    </section>
+    </header>
 
     <!--four-options-->
     <section data-item-information="1" class="four-options">
@@ -103,13 +103,13 @@
             <!--div в кторый будут загружаться картинки-->
             <div id="uploading-pictures"></div>
 
-            <div id="container-load">
+            <div class="container-load">
                 <div class="top-left"></div>
                 <div class="top-right"></div>
                 <div class="bottom-left"></div>
                 <div class="bottom-right"></div>
             </div>
-            <div id="work-block-button"><span>+</span><p>load more</p></div>
+            <div id="work-block-button" class="load-img"><span>+</span><p>load more</p></div>
         </div>
     </section>
 
@@ -235,7 +235,7 @@
     </section>
 
     <!--what-people-say-->
-    <section data-item-information="6" data-paroller-factor="-0.67" data-paroller-type = "background" class="what-people-say">
+    <section data-item-information="6" class="what-people-say">
         <div class="container">
             <h2 class="label-section">What People Say About theHam</h2>
             <div class="double-lines"></div>
@@ -264,6 +264,51 @@
             </div>
         </div>
     </section>
+
+    <!--gallery-->
+    <section data-item-information="7" class="gallery container">
+        <h2 class="label-section">Gallery of best images</h2>
+        <div class="double-lines"></div>
+        <div class="container-plugins">
+            <img src="img/gallery/gallery%20(1).png" class="plugin-item " alt="not found img">
+            <img src="img/gallery/gallery%20(2).png" class="plugin-item " alt="not found img">
+            <div class="plugin-item ">
+                <div class=" container-plugin-div-on-two">
+                    <img src="img/gallery/gallery%20(3).png" class="plugin-item-div-on-two" alt="not found img">
+                    <img src="img/gallery/gallery%20(4).png" class="plugin-item-div-on-two" alt="not found img">
+                </div>
+                <div class="container-plugin-div-on-three">
+                    <img src="img/gallery/gallery%20(5).png" class="plugin-item-div-on-tree" alt="not found img">
+                    <img src="img/gallery/gallery%20(6).png" class="plugin-item-div-on-tree" alt="not found img">
+                    <img src="img/gallery/gallery%20(7).png" class="plugin-item-div-on-tree" alt="not found img">
+                    <img src="img/gallery/gallery%20(8).png" class="plugin-item-div-on-tree" alt="not found img">
+                    <img src="img/gallery/gallery%20(9).png" class="plugin-item-div-on-tree" alt="not found img">
+                    <img src="img/gallery/gallery%20(10).png" class="plugin-item-div-on-tree" alt="not found img">
+                    <img src="img/gallery/gallery%20(11).png" class="plugin-item-div-on-tree" alt="not found img">
+                    <img src="img/gallery/gallery%20(12).png" class="plugin-item-div-on-tree" alt="not found img">
+                    <img src="img/gallery/gallery%20(13).png" class="plugin-item-div-on-tree" alt="not found img">
+                </div>
+            </div>
+            <img src="img/gallery/gallery%20(14).png" class="plugin-item " alt="not found img">
+            <img src="img/gallery/gallery%20(15).png" class="plugin-item " alt="not found img">
+            <img src="img/gallery/gallery%20(16).png" class="plugin-item " alt="not found img">
+            <img src="img/gallery/gallery%20(17).png" class="plugin-item " alt="not found img">
+            <img src="img/gallery/gallery%20(18).png" class="plugin-item " alt="not found img">
+            <img src="img/gallery/gallery%20(19).png" class="plugin-item " alt="not found img">
+        </div>
+        <div class="container-load">
+            <div class="top-left"></div>
+            <div class="top-right"></div>
+            <div class="bottom-left"></div>
+            <div class="bottom-right"></div>
+        </div>
+        <div id="gallery-block-button" class="load-img"><span>+</span><p>load more</p></div>
+    </section>
+
+<!--Footer-->
+    <footer class="footer">
+        <p class="footer-title">© Copyright 2015 <span class="footer-title-redid">theHam </span> | All Rights Reserved</p>
+    </footer>
 
     <script src="javascript/jquery-3.4.1.min.js"></script>
     <script src="javascript/plugins/masonry.pkgd.min.js"></script>

@@ -13,7 +13,11 @@ let ourServices,
     specialtyPerson,
     slider,
     shiftToLeft,
-    shiftToRight;
+    shiftToRight,
+    galleryBlockButton,
+    imagGallery,
+    partImg=19,
+    countNumberGallery=0;
 
 //массив объектов для service block
 const ourServicesItemsInformation = [
@@ -91,16 +95,16 @@ const ourServicesItemsInformation = [
         ],[
             'Good Job',
             'C++',
-            "C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or \"C with Classes\".",
+            "C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or \"C with Classes\".Bjarne Stroustrup as an extension of the C programming language, or \"C with Classes\"",
             "img/what_people_say_about/person%20(10).jpg"
         ]
     ];
 
 //генерация путей к картинкам для work-block
-function getSrcImgInFolder(folder,nameImg,amountImg){
+function getSrcImgInFolder(folder,nameImg,amountImg,format){
     let array = [];
     for(let i =0;i<amountImg;i++){
-        array[i]=`img/${folder}/${nameImg}%20(${i+1}).jpg`;
+        array[i]=`img/${folder}/${nameImg}%20(${i+1}).${format}`;
     }
     return array;
 }
@@ -133,13 +137,13 @@ window.onload = function () {
     workBlockButton = document.getElementById('work-block-button');
     uploadingPictures = document.getElementById('uploading-pictures');
     workBlockItems = document.getElementById('work-block-items');
-    containerLoad = document.getElementById('container-load');
+    containerLoad = document.querySelectorAll('.container-load');
     //массив массивов всех путей к картинкам
     allImg = [
-        getSrcImgInFolder('graphic_design','graphic-design',36),
-        getSrcImgInFolder('landing_page','landing-page',36),
-        getSrcImgInFolder('web_design','web-design',36),
-        getSrcImgInFolder('wordpress','wordpress',36)
+        getSrcImgInFolder('graphic_design','graphic-design',36,'jpg'),
+        getSrcImgInFolder('landing_page','landing-page',36,'jpg'),
+        getSrcImgInFolder('web_design','web-design',36,'jpg'),
+        getSrcImgInFolder('wordpress','wordpress',36,'jpg')
     ];
     //region work block
     //событие на выбор категории
@@ -166,9 +170,9 @@ window.onload = function () {
     //событие на клик кнопки подгрузки фото
     workBlockButton.addEventListener('click', function () {
         workBlockButton.style.display = "none";
-        containerLoad.style.display ='block';
+        containerLoad[0].style.display ='block';
         let timer = setTimeout(function () {
-            containerLoad.style.display ='none';
+            containerLoad[0].style.display ='none';
             addImages(dataSetNumberCurrent);
             if(countNumberWork===0) {
                 workBlockButton.style.display = "flex";
@@ -191,7 +195,6 @@ window.onload = function () {
     shiftToRight = document.getElementById('shiftToRight');
     shiftToLeft =document.getElementById('shiftToLeft');
     slider = document.getElementById('slider');
-
     slider.addEventListener('click',function (event) {
         let target = event.target;
         if(target.classList.contains('slider-item')) {
@@ -201,14 +204,13 @@ window.onload = function () {
         }
     });
     shiftToLeft.addEventListener('click',function () {
-        let shift = 0;
         let activeElement = document.querySelector('.slider-item-select');
         if(activeElement.previousElementSibling){
             removeSelectClasses('slider-item', 'slider-item-select');
             activeElement.previousElementSibling.classList.add('slider-item-select');
             updateInformationAboutPerson(+activeElement.previousElementSibling.dataset.numberPerson)
         }
-
+        let shift = 0;
         let timerLeft = setInterval(function () {
             if(shift>document.querySelector('.direct').offsetWidth/10-4*4.3){
                 clearInterval(timerLeft);
@@ -228,7 +230,6 @@ window.onload = function () {
             activeElement.nextElementSibling.classList.add('slider-item-select');
             updateInformationAboutPerson(+activeElement.nextElementSibling.dataset.numberPerson)
         }
-
         let shift = 0;
         let timerLeft = setInterval(function () {
             if(shift>document.querySelector('.direct').offsetWidth/10+4*2){
@@ -241,9 +242,57 @@ window.onload = function () {
             }
         },20);
     });
-
     /*end region what-people-say*/
 
+    /*region gallery*/
+    $('.container-plugin-div-on-three').masonry({
+        itemSelector: '.plugin-item-div-on-tree',
+        columnWidth: 7,
+        fitWidth: true
+
+    });
+    $('.container-plugin-div-on-two').masonry({
+        itemSelector: '.plugin-item-div-on-two',
+        columnWidth: 7,
+        fitWidth: true
+    });
+    imagGallery = getSrcImgInFolder('gallery','gallery',36,'png');
+    let grid = document.querySelector('.container-plugins');
+    let msnry = new Masonry( grid, {
+        columnWidth: 20,
+        itemSelector: '.plugin-item',
+        fitWidth: true
+    });
+    galleryBlockButton= document.querySelector('#gallery-block-button');
+    galleryBlockButton.addEventListener( 'click', function() {
+
+        galleryBlockButton.style.display = "none";
+        containerLoad[1].style.display ='block';
+        let timer = setTimeout(function () {
+            containerLoad[1].style.display ='none';
+            let elements = [];
+            let fragment = document.createDocumentFragment();
+            for ( let i = 0; i < 10; i++ ) {
+                let elem = createImgGallery(partImg+i,'plugin-item');
+                grid.appendChild( elem );
+                msnry.appended( elem );
+            }
+
+
+            if(countNumberWork===0) {
+                galleryBlockButton.style.display = "flex";
+                countNumberWork++;
+            }
+            else {
+                countNumberWork=0;
+            }
+        },3500);
+
+
+
+
+    });
+    /*end region gallery*/
 
 };
 //region work block
@@ -381,17 +430,18 @@ function generationCard(category,src) {
 
 
 /*region what-people-say*/
+/*меняет текст в элементе*/
 function updateHTMLTEXT(element,index,number) {
     element.innerHTML = informationAboutPeople[index][number];
 }
-
+/*обновление информации о персоне*/
 function updateInformationAboutPerson(index) {
     selectPhoto.src=informationAboutPeople[index][3];
     updateHTMLTEXT(specialtyPerson,index,1);
     updateHTMLTEXT(namePerson,index,0);
     updateHTMLTEXT(descriptionPerson,index,2);
 }
-
+/*удаляет ранее выбраного человека*/
 function removeSelectClasses(whereFind, classToRemove) {
     let temp = document.querySelectorAll(`.${whereFind}`);
     temp.forEach((element)=>{
@@ -402,3 +452,16 @@ function removeSelectClasses(whereFind, classToRemove) {
     })
 }
 /*end region what-people-say*/
+
+/*region gallery*/
+function createImgGallery(index,classItems) {
+    let htmlImageElement = document.createElement('img');
+    htmlImageElement.alt='not found';
+    htmlImageElement.src=imagGallery[index];
+    htmlImageElement.classList.add(classItems);
+    return htmlImageElement;
+}
+/*end region gallery*/
+
+
+
