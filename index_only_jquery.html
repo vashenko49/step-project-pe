@@ -10,11 +10,308 @@
     <script src="https://kit.fontawesome.com/a71a1d271d.js"></script>
 </head>
 <body>
+<!--header-->
+<header class="header-home-block">
+    <section class="header">
+        <div class="container">
+            <div class="logo">
+                <div id="hexagon"><a class="icon" href="#">H</a></div>
+                <a href="#" class="logo-slogan"><span class="logo-slogan-redid">the</span>Ham</a>
+            </div>
+            <div class="header-list">
+                <a data-item="0" class="header-list-item" href="#">home</a>
+                <a data-item="1" class="header-list-item" href="#">about</a>
+                <a data-item="2" class="header-list-item" href="#">skills</a>
+                <a data-item="3" class="header-list-item" href="#">service</a>
+                <a data-item="4" class="header-list-item" href="#">work</a>
+                <a data-item="5" class="header-list-item" href="#">testimonial</a>
+                <a data-item="6" class="header-list-item" href="#">blog</a>
+                <a data-item="7" class="header-list-item" href="#">team</a>
+                <a class="header-list-item" href="#">contact</a>
+                <a class="header-list-item fas fa-search" href="#"></a>
+            </div>
+        </div>
+    </section>
+    <div data-item-information="0" class="home-block container">
+        <h2 class="pre-slogan">The Ham is <span class="pre-slogan-redid">Wordpress theme</span></h2>
+        <h1 class="main-slogan">we are creative</h1>
+        <h2 class="next-slogan">Just Buy And Enjoy These Awesome Features</h2>
+        <a class="button button-color-green" href="#">EXPLORE NOW</a>
+        <a class="button button-color-blue" href="#">purchase now</a>
 
-    <script src="javascript/jquery-3.4.1.min.js"></script>
-    <script src="javascript/plugins/masonry.pkgd.min.js"></script>
-    <script src="javascript/plugins/jquery.paroller.min.js"></script>
-    <script src="javascript/script_only_jquery.js"></script>
+    </div>
 
+</header>
+
+<!--four-options-->
+<section data-item-information="1" class="four-options">
+    <a href="#" class="four-options-item">
+        <i class="item-icon fas fa-hand-point-up"></i>
+        <p class="item-text">Different theme option</p>
+    </a>
+    <a href="#" class="four-options-item">
+        <i class="item-icon fas fa-gem"></i>
+        <p class="item-text">fully customizable</p>
+    </a>
+    <a href="#" class="four-options-item">
+        <i class="item-icon fas fa-lightbulb"></i>
+        <p class="item-text">unlimited support</p>
+    </a>
+    <a href="#" class="four-options-item">
+        <i class="item-icon fas fa-desktop"></i>
+        <p class="item-text">responsive all device</p>
+    </a>
+</section>
+
+<!--service-->
+<section data-item-information="2" class="service container">
+    <h2 class="label-section service-label">Our Services</h2>
+    <div class="double-lines service-double-lines"></div>
+    <div id="ourServices">
+        <a href="#" data-number="0" class="service-items-link service-items-link-check">Web Design</a>
+        <a href="#" data-number="1" class="service-items-link">Graphic Design</a>
+        <a href="#" data-number="2" class="service-items-link">Online Support</a>
+        <a href="#" data-number="3" class="service-items-link">App Design</a>
+        <a href="#" data-number="4" class="service-items-link">Online Marketing</a>
+        <a href="#" data-number="5" class="service-items-link">Seo Service</a>
+    </div>
+    <img src="img/web_design/web-design%20(1).jpg" alt="not found img" id="service-information-img">
+    <p id="service-information-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</section>
+
+<!--purchase-block-->
+<section data-item-information="3" data-paroller-factor="0.5" class="purchase-block">
+    <div class="container">
+        <h2 class="purchase-block-slogan">Everything is ready. just buy and install now</h2>
+        <p class="purchase-block-text">Smooth reliable, responsive ready, perfect portfolio, unique blog layout and many many options for you</p>
+        <a class="button button-color-green purchase-button" href="#">purchase now</a>
+    </div>
+</section>
+
+<!--work-block-->
+<section data-item-information="4" class="work-block">
+    <div class="container">
+        <h2 class="label-section">Our Amazing Work</h2>
+        <div class="double-lines"></div>
+        <div id="work-block-items">
+            <a href="#" data-number="0" class="work-block-link work-block-link-check">All</a>
+            <a href="#" data-number="1" class="work-block-link">Graphic Design</a>
+            <a href="#" data-number="2" class="work-block-link">Web Design</a>
+            <a href="#" data-number="3" class="work-block-link">Landing Pages</a>
+            <a href="#" data-number="4" class="work-block-link">Wordpress</a>
+        </div>
+        <!--div в кторый будут загружаться картинки-->
+        <div id="uploading-pictures"></div>
+
+        <div class="container-load">
+            <div class="top-left"></div>
+            <div class="top-right"></div>
+            <div class="bottom-left"></div>
+            <div class="bottom-right"></div>
+        </div>
+        <div id="work-block-button" class="load-img"><span>+</span><p>load more</p></div>
+    </div>
+</section>
+
+<!--breaking-news-->
+<section data-item-information="5" class="breaking-news container">
+    <h2 class="label-section">Breaking News</h2>
+    <div class="double-lines"></div>
+    <div class="container-cards-breaking-news">
+
+        <a href="#" class="card-breaking-news">
+            <div class="card-tools card-top-1">
+                <div class="top-block-date">
+                    <p class="date-day">12</p>
+                    <p class="date-month">Feb</p>
+                </div>
+            </div>
+            <div class="card-bottom">
+                <p class="bottom-title">Amazing Image Post</p>
+                <p class="bottom-owner">By admin</p>
+                <p class="bottom-amount-comment">2 comment</p>
+            </div>
+        </a>
+
+        <a href="#" class="card-breaking-news">
+            <div class="card-tools card-top-2">
+                <div class="top-block-date">
+                    <p class="date-day">12</p>
+                    <p class="date-month">Feb</p>
+                </div>
+            </div>
+            <div class="card-bottom">
+                <p class="bottom-title">Amazing Image Post</p>
+                <p class="bottom-owner">By admin</p>
+                <p class="bottom-amount-comment">2 comment</p>
+            </div>
+        </a>
+
+        <a href="#" class="card-breaking-news">
+            <div class="card-tools card-top-3">
+                <div class="top-block-date">
+                    <p class="date-day">12</p>
+                    <p class="date-month">Feb</p>
+                </div>
+            </div>
+            <div class="card-bottom">
+                <p class="bottom-title">Amazing Image Post</p>
+                <p class="bottom-owner">By admin</p>
+                <p class="bottom-amount-comment">2 comment</p>
+            </div>
+        </a>
+
+        <a href="#" class="card-breaking-news">
+            <div class="card-tools card-top-4">
+                <div class="top-block-date">
+                    <p class="date-day">12</p>
+                    <p class="date-month">Feb</p>
+                </div>
+            </div>
+            <div class="card-bottom">
+                <p class="bottom-title">Amazing Image Post</p>
+                <p class="bottom-owner">By admin</p>
+                <p class="bottom-amount-comment">2 comment</p>
+            </div>
+        </a>
+
+        <a href="#" class="card-breaking-news">
+            <div class="card-tools card-top-5">
+                <div class="top-block-date">
+                    <p class="date-day">12</p>
+                    <p class="date-month">Feb</p>
+                </div>
+            </div>
+            <div class="card-bottom">
+                <p class="bottom-title">Amazing Image Post</p>
+                <p class="bottom-owner">By admin</p>
+                <p class="bottom-amount-comment">2 comment</p>
+            </div>
+        </a>
+
+        <a href="#" class="card-breaking-news">
+            <div class="card-tools card-top-6">
+                <div class="top-block-date">
+                    <p class="date-day">12</p>
+                    <p class="date-month">Feb</p>
+                </div>
+            </div>
+            <div class="card-bottom">
+                <p class="bottom-title">Amazing Image Post</p>
+                <p class="bottom-owner">By admin</p>
+                <p class="bottom-amount-comment">2 comment</p>
+            </div>
+        </a>
+
+        <a href="#" class="card-breaking-news">
+            <div class="card-tools card-top-7">
+                <div class="top-block-date">
+                    <p class="date-day">12</p>
+                    <p class="date-month">Feb</p>
+                </div>
+            </div>
+            <div class="card-bottom">
+                <p class="bottom-title">Amazing Image Post</p>
+                <p class="bottom-owner">By admin</p>
+                <p class="bottom-amount-comment">2 comment</p>
+            </div>
+        </a>
+
+        <a href="#" class="card-breaking-news">
+            <div class="card-tools card-top-8">
+                <div class="top-block-date">
+                    <p class="date-day">12</p>
+                    <p class="date-month">Feb</p>
+                </div>
+            </div>
+            <div class="card-bottom">
+                <p class="bottom-title">Amazing Image Post</p>
+                <p class="bottom-owner">By admin</p>
+                <p class="bottom-amount-comment">2 comment</p>
+            </div>
+        </a>
+
+    </div>
+</section>
+
+<!--what-people-say-->
+<section data-item-information="6" class="what-people-say">
+    <div class="container">
+        <h2 class="label-section">What People Say About theHam</h2>
+        <div class="double-lines"></div>
+        <img src="img/what_people_say_about/Forma%201.png" alt="not found" class="very-big-quotes">
+        <p id="descriptionPerson">In computing, a solution stack or software stack is a set of software subsystems or components needed to create a complete platform such that no additional software is needed to support applications. Applications are said to "run on" or "run on top of" the resulting platform.</p>
+        <p id="namePerson">Bob Marty</p>
+        <p id="specialtyPerson">Full Stack</p>
+        <img src="img/what_people_say_about/person%20(3).jpg" alt="not found" id="select-photo">
+        <div id="shiftPhoto">
+            <button id="shiftToLeft">&lsaquo;</button>
+            <div id="slider">
+                <div class="direct">
+                    <img src="img/what_people_say_about/person%20(1).jpg" data-number-person="0" alt="not found" class="slider-item">
+                    <img src="img/what_people_say_about/person%20(2).jpg" data-number-person="1" alt="not found" class="slider-item ">
+                    <img src="img/what_people_say_about/person%20(3).jpg" data-number-person="2" alt="not found" class="slider-item slider-item-select">
+                    <img src="img/what_people_say_about/person%20(4).jpg" data-number-person="3" alt="not found" class="slider-item">
+                    <img src="img/what_people_say_about/person%20(5).jpg" data-number-person="4" alt="not found" class="slider-item">
+                    <img src="img/what_people_say_about/person%20(6).jpg" data-number-person="5" alt="not found" class="slider-item ">
+                    <img src="img/what_people_say_about/person%20(7).jpg" data-number-person="6" alt="not found" class="slider-item">
+                    <img src="img/what_people_say_about/person%20(8).jpg" data-number-person="7" alt="not found" class="slider-item">
+                    <img src="img/what_people_say_about/person%20(9).jpg" data-number-person="8" alt="not found" class="slider-item">
+                    <img src="img/what_people_say_about/person%20(10).jpg" data-number-person="9" alt="not found" class="slider-item ">
+                </div>
+            </div>
+            <button id="shiftToRight">&rsaquo;</button>
+        </div>
+    </div>
+</section>
+
+<!--gallery-->
+<section data-item-information="7" class="gallery container">
+    <h2 class="label-section">Gallery of best images</h2>
+    <div class="double-lines"></div>
+    <div class="container-plugins">
+        <img src="img/gallery/gallery%20(1).png" class="plugin-item " alt="not found img">
+        <img src="img/gallery/gallery%20(2).png" class="plugin-item " alt="not found img">
+        <div class="plugin-item ">
+            <div class=" container-plugin-div-on-two">
+                <img src="img/gallery/gallery%20(3).png" class="plugin-item-div-on-two" alt="not found img">
+                <img src="img/gallery/gallery%20(4).png" class="plugin-item-div-on-two" alt="not found img">
+            </div>
+            <div class="container-plugin-div-on-three">
+                <img src="img/gallery/gallery%20(5).png" class="plugin-item-div-on-tree" alt="not found img">
+                <img src="img/gallery/gallery%20(6).png" class="plugin-item-div-on-tree" alt="not found img">
+                <img src="img/gallery/gallery%20(7).png" class="plugin-item-div-on-tree" alt="not found img">
+                <img src="img/gallery/gallery%20(8).png" class="plugin-item-div-on-tree" alt="not found img">
+                <img src="img/gallery/gallery%20(9).png" class="plugin-item-div-on-tree" alt="not found img">
+                <img src="img/gallery/gallery%20(10).png" class="plugin-item-div-on-tree" alt="not found img">
+                <img src="img/gallery/gallery%20(11).png" class="plugin-item-div-on-tree" alt="not found img">
+                <img src="img/gallery/gallery%20(12).png" class="plugin-item-div-on-tree" alt="not found img">
+                <img src="img/gallery/gallery%20(13).png" class="plugin-item-div-on-tree" alt="not found img">
+            </div>
+        </div>
+        <img src="img/gallery/gallery%20(14).png" class="plugin-item " alt="not found img">
+        <img src="img/gallery/gallery%20(15).png" class="plugin-item " alt="not found img">
+        <img src="img/gallery/gallery%20(16).png" class="plugin-item " alt="not found img">
+
+
+    </div>
+    <div class="container-load">
+        <div class="top-left"></div>
+        <div class="top-right"></div>
+        <div class="bottom-left"></div>
+        <div class="bottom-right"></div>
+    </div>
+    <div id="gallery-block-button" class="load-img"><span>+</span><p>load more</p></div>
+</section>
+
+<!--Footer-->
+<footer class="footer">
+    <p class="footer-title">© Copyright 2015 <span class="footer-title-redid">theHam </span> | All Rights Reserved</p>
+</footer>
+
+<script src="javascript/jquery-3.4.1.min.js"></script>
+<script src="javascript/plugins/masonry.pkgd.min.js"></script>
+<script src="javascript/plugins/jquery.paroller.min.js"></script>
+<script src="javascript/script_only_jquery.js"></script>
 </body>
 </html>

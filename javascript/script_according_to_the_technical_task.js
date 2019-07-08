@@ -16,7 +16,7 @@ let ourServices,
     shiftToRight,
     galleryBlockButton,
     imagGallery,
-    partImg=19,
+    partImg=17,
     countNumberGallery=0;
 
 //массив объектов для service block
@@ -212,13 +212,13 @@ window.onload = function () {
         }
         let shift = 0;
         let timerLeft = setInterval(function () {
-            if(shift>document.querySelector('.direct').offsetWidth/10-4*4.3){
+            if(shift>(slider.firstElementChild.offsetWidth/slider.firstElementChild.childElementCount)-2){
                 clearInterval(timerLeft);
                 return false;
             }
             else {
-                slider.scrollLeft-=3;
-                shift+=3;
+                slider.scrollLeft-=5;
+                shift+=5;
             }
         },20);
 
@@ -232,13 +232,13 @@ window.onload = function () {
         }
         let shift = 0;
         let timerLeft = setInterval(function () {
-            if(shift>document.querySelector('.direct').offsetWidth/10+4*2){
+            if(shift>(slider.firstElementChild.offsetWidth/slider.firstElementChild.childElementCount)-2){
                 clearInterval(timerLeft);
                 return false;
             }
             else {
-                slider.scrollLeft+=3;
-                shift+=3;
+                slider.scrollLeft+=5;
+                shift+=5;
             }
         },20);
     });
@@ -247,49 +247,35 @@ window.onload = function () {
     /*region gallery*/
     $('.container-plugin-div-on-three').masonry({
         itemSelector: '.plugin-item-div-on-tree',
-        columnWidth: 7,
+        columnWidth: '.plugin-item-div-on-tree',
         fitWidth: true
 
     });
     $('.container-plugin-div-on-two').masonry({
         itemSelector: '.plugin-item-div-on-two',
-        columnWidth: 7,
+        columnWidth: '.plugin-item-div-on-two',
         fitWidth: true
     });
     imagGallery = getSrcImgInFolder('gallery','gallery',36,'png');
-    let grid = document.querySelector('.container-plugins');
-    let msnry = new Masonry( grid, {
-        columnWidth: 20,
-        itemSelector: '.plugin-item',
-        fitWidth: true
+    let $container = $('.container-plugins').masonry({
+        columnWidth: '.plugin-item',
+        itemSelector: '.plugin-item'
     });
     galleryBlockButton= document.querySelector('#gallery-block-button');
     galleryBlockButton.addEventListener( 'click', function() {
-
         galleryBlockButton.style.display = "none";
         containerLoad[1].style.display ='block';
         let timer = setTimeout(function () {
             containerLoad[1].style.display ='none';
-            let elements = [];
-            let fragment = document.createDocumentFragment();
-            for ( let i = 0; i < 10; i++ ) {
-                let elem = createImgGallery(partImg+i,'plugin-item');
-                grid.appendChild( elem );
-                msnry.appended( elem );
-            }
-
-
-            if(countNumberWork===0) {
+            $container.masonryImagesReveal(getItems());
+            if(countNumberGallery===0) {
                 galleryBlockButton.style.display = "flex";
-                countNumberWork++;
+                countNumberGallery++;
             }
             else {
-                countNumberWork=0;
+                countNumberGallery=0;
             }
         },3500);
-
-
-
 
     });
     /*end region gallery*/
@@ -454,14 +440,42 @@ function removeSelectClasses(whereFind, classToRemove) {
 /*end region what-people-say*/
 
 /*region gallery*/
-function createImgGallery(index,classItems) {
-    let htmlImageElement = document.createElement('img');
-    htmlImageElement.alt='not found';
-    htmlImageElement.src=imagGallery[index];
-    htmlImageElement.classList.add(classItems);
-    return htmlImageElement;
+$.fn.masonryImagesReveal = function( $items ) {
+    let msnry = this.data('masonry');
+    let itemSelector = msnry.options.itemSelector;
+    $items.hide();
+    this.append( $items );
+    $items.imagesLoaded().progress( function( imgLoad, image ) {
+        let $item = $( image.img ).parents( itemSelector );
+        $item.show();
+        msnry.appended( $item );
+    });
+
+    return this;
+};
+
+
+function createGalleryIMG() {
+    let item = `<div class="plugin-item"><img src="img/gallery/gallery%20(${partImg}).png" alt="img not found"/></div>`;
+    partImg++;
+    return item;
+}
+
+function getItems() {
+    let items = '';
+    for ( var i=0; i < 10&&partImg<36; i++ ) {
+        items += createGalleryIMG();
+    }
+    return $( items );
 }
 /*end region gallery*/
+
+
+
+
+
+
+
 
 
 
