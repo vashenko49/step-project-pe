@@ -295,7 +295,7 @@ function addImages() {
         generationAllCategoryImg();
     }
     else {
-        let remove = filter(dataSetNumberCurrent);
+        let remove = filter();
         if(remove>12){
             remove = 12 - uploadingPictures.children.length;
         }
@@ -303,20 +303,20 @@ function addImages() {
             remove=12;
         }
         for (let i =0;i<remove;i++){
-            uploadingPictures.append(addImg(dataSetNumberCurrent));
+            uploadingPictures.append(addImg());
         }
     }
 }
 //функция добавденния карнтинки возращает node елемента, вызывает в себе функцию проверки наличия картинки на странице
-function addImg(numberCategory) {
+function addImg() {
     let newSrc = 'none';
-    for(let i =0; i<allImg[numberCategory-1].length;i++){
-        if(isImgInBlock(allImg[numberCategory-1][i])){
-            newSrc = allImg[numberCategory-1][i];
+    for(let i =0; i<allImg[dataSetNumberCurrent-1].length;i++){
+        if(isImgInBlock(allImg[dataSetNumberCurrent-1][i])){
+            newSrc = allImg[dataSetNumberCurrent-1][i];
             break;
         }
     }
-    return  generationCard(numberCategory,newSrc);
+    return  generationCard(dataSetNumberCurrent,newSrc);
 }
 //проверяет  наличие картинки, если такая картинка уже есть то возращает false
 function isImgInBlock(src) {
@@ -332,16 +332,16 @@ function isImgInBlock(src) {
     return trigger;
 }
 //фильтрует картинки по категориям, картинка которая не соответствовует категории будет удалена и возращает количество удаленных картинок
-function filter(category) {
+function filter() {
     let countRemoveElement =0;
-    if(category===0){
+    if(dataSetNumberCurrent===0){
         return;
     }
     else{
         let children = uploadingPictures.children;
         //с конца потому что елементы удаляються и размер коллекции уменьшиваеться
         for(let i = children.length-1;i>=0;i--){
-            if(+children[i].firstElementChild.dataset.number!==category){
+            if(+children[i].firstElementChild.dataset.number!==dataSetNumberCurrent){
                 children[i].remove();
                 countRemoveElement++;
             }
