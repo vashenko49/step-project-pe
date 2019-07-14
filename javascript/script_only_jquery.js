@@ -14,10 +14,27 @@ let $workBlockButton,
     $shiftToLeft,
     $slider,
     $galleryBlockButton,
-    $imagGallery,
+    imagGallery,
     partImg=17,
-    countNumberGallery=0;
+    countNumberGallery=0,
+    srcBreakNews,
+    $containerCardsBreakingNews;
 
+//функция создана на две похожые кнопки
+function eventButtonGeneralLoad(containerLoadAccount,countPutButton,button, callBackFunction){
+    button.css({display:"none"});
+    $($containerLoad[containerLoadAccount]).css({display:'block'});
+    setTimeout(function () {
+        $($containerLoad[containerLoadAccount]).css({display:'none'});
+        callBackFunction();
+        if(countPutButton===0) {
+            button.css({display:"flex"});
+        }
+        else {
+            countPutButton=0;
+        }
+    },3500);
+}
 
 const ourServicesItemsInformation = [
         {
@@ -146,19 +163,10 @@ $(window).on("load",function () {
         event.preventDefault();
     });
     $workBlockButton.on('click',function () {
-        $workBlockButton.css({display:'none'});
-        $($containerLoad[0]).css({display:'block'});
-        setTimeout(function () {
-            $($containerLoad[0]).css({display:'none'});
-            addImages(dataSetNumberCurrent);
-            if(countNumberWork===0) {
-                $workBlockButton.css({display:'flex'});
-                countNumberWork++;
-            }
-            else {
-                countNumberWork=0;
-            }
-        },3500);
+        eventButtonGeneralLoad(0,countNumberWork,$workBlockButton,function () {
+            addImages();
+            countNumberWork++;
+        });
     });
     //end region work bock
 
@@ -181,44 +189,35 @@ $(window).on("load",function () {
     });
     $shiftToLeft.on('click',function () {
         let $activeElement = $('.slider-item-select');
-        debugger;
         if($activeElement.prev().length){
+            if($shiftToRight.hasClass('finish-direction')){
+                $shiftToRight.removeClass('finish-direction')
+            }
             removeSelectClasses('slider-item-select');
             $activeElement.prev().addClass('slider-item-select');
             updateInformationAboutPerson(+$activeElement.prev().attr('data-number-person'))
         }
-        let shift = 0;
-        let timerLeft = setInterval(function () {
-            if(shift>($($slider.children()[0]).width()/$($slider.children()[0]).children().length)-2){
-                clearInterval(timerLeft);
-                return false;
-            }
-            else {
-                $slider.scrollLeft($slider.scrollLeft()-5);
-                shift+=5;
-            }
-        },20);
+        else {
+            $shiftToLeft.addClass('finish-direction');
+        }
+        shiftDirection(false);
 
     });
     //функции не создавал бо потом происходят ошибки из за интервала идет налаживание один на одного если быстро или резко листать слайдер
     $shiftToRight.on('click',function () {
         let $activeElement = $('.slider-item-select');
         if($activeElement.next().length){
+            if($shiftToLeft.hasClass('finish-direction')){
+                $shiftToLeft.removeClass('finish-direction')
+            }
             removeSelectClasses('slider-item-select');
             $activeElement.next().addClass('slider-item-select');
             updateInformationAboutPerson(+$activeElement.next().attr('data-number-person'))
         }
-        let shift = 0;
-        let timerLeft = setInterval(function () {
-            if(shift>($($slider.children()[0]).width()/$($slider.children()[0]).children().length)-2){
-                clearInterval(timerLeft);
-                return false;
-            }
-            else {
-                $slider.scrollLeft($slider.scrollLeft() +5);
-                shift+=5;
-            }
-        },20);
+        else {
+            $shiftToRight.addClass('finish-direction');
+        }
+        shiftDirection(true);
     });
     /*end region what-people-say*/
 
@@ -242,23 +241,27 @@ $(window).on("load",function () {
     $galleryBlockButton= $('#gallery-block-button');
 
     $galleryBlockButton.on( 'click', function() {
-        debugger;
-        $galleryBlockButton.css({display:"none"});
-        $($containerLoad[1]).css({display:'block'});
-        let timer = setTimeout(function () {
-            $($containerLoad[1]).css({display:'none'});
+        eventButtonGeneralLoad(1,countNumberGallery,$galleryBlockButton,function () {
             $container.masonryImagesReveal(getItems());
-            if(countNumberGallery===0) {
-                $galleryBlockButton.css({display:"flex"});
-                countNumberGallery++;
-            }
-            else {
-                countNumberGallery=0;
-            }
-        },3500);
-
+            countNumberGallery++;
+        });
     });
     /*end region gallery*/
+
+    /*region scroll */
+    $dataItem = $('[data-item]');
+    $dataInformation = $('[data-item-information]');
+    $dataItem.on('click',function (event) {
+        let heightScroll = $dataInformation.eq(($(event.target).data('item')).toString()).offset().top;
+        if(heightScroll)
+            $('html, body').animate({scrollTop: heightScroll},1200)
+    });
+    /*end region scroll */
+    /*region breaking news*/
+    srcBreakNews= getSrcImgInFolder('brealing_news','news',8,'png');
+    $containerCardsBreakingNews = $("#containerCardsBreakingNews");
+    generationNewsCards($containerCardsBreakingNews,srcBreakNews);
+    /*end region breaking news*/
 });
 
 //region work block
@@ -388,14 +391,41 @@ function isImgInBlock(src) {
 }
 //end region work block
 
+
+/*region breaking news*/
+function generationNewsCards(elementWhereToInsert,arraySrc) {
+    arraySrc.forEach((element)=>{
+        elementWhereToInsert.append($(`<a class="card-breaking-news"><div class="card-tools"><img src="${element}" alt="not found img"><div class="top-block-date"><p class="date-day">12</p><p class="date-month">Feb</p></div></div><div class="card-bottom"><p class="bottom-title">Amazing Image Post</p><p class="bottom-owner">By admin</p><p class="bottom-amount-comment">2 comment</p></div></a>`));
+    })
+}
+/*end region breaking news*/
+
+
+
 /*region what-people-say*/
+//двигает
+function shiftDirection(direction){
+    /*direction: false-left, true-right*/
+    let shift = 0;
+    let timerLeft = setInterval(function () {
+        if(shift>($($slider.children()[0]).width()/$($slider.children()[0]).children().length)-2){
+            clearInterval(timerLeft);
+            return false;
+        }
+        else {
+            direction?$slider.scrollLeft($slider.scrollLeft() +5):$slider.scrollLeft($slider.scrollLeft() -5);
+            shift+=5;
+        }
+    },20);
+
+}
 /*меняет текст в элементе*/
 function updateHTMLTEXT(element,index,number) {
     element.html(informationAboutPeople[index][number]);
 }
 /*обновление информации о персоне*/
 function updateInformationAboutPerson(index) {
-    $selectPhoto.src=informationAboutPeople[index][3];
+    $selectPhoto.attr('src',informationAboutPeople[index][3]);
     updateHTMLTEXT($specialtyPerson,index,1);
     updateHTMLTEXT($namePerson,index,0);
     updateHTMLTEXT($descriptionPerson,index,2);
@@ -421,14 +451,11 @@ $.fn.masonryImagesReveal = function( $items ) {
 
     return this;
 };
-
-
 function createGalleryIMG() {
     let item = `<div class="plugin-item"><img src="img/gallery/gallery%20(${partImg}).png" alt="img not found"/></div>`;
     partImg++;
     return item;
 }
-
 function getItems() {
     let items = '';
     for ( var i=0; i < 10&&partImg<36; i++ ) {

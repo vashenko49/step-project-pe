@@ -15,7 +15,7 @@
     <section class="header">
         <div class="container">
             <div class="logo">
-                <div id="hexagon"><a class="icon" href="#">H</a></div>
+                <div class="hexagon"><a class="icon" href="#">H</a></div>
                 <a href="#" class="logo-slogan"><span class="logo-slogan-redid">the</span>Ham</a>
             </div>
             <div class="header-list">
@@ -27,8 +27,8 @@
                 <a data-item="5" class="header-list-item" href="#">testimonial</a>
                 <a data-item="6" class="header-list-item" href="#">blog</a>
                 <a data-item="7" class="header-list-item" href="#">team</a>
-                <a class="header-list-item" href="#">contact</a>
-                <a class="header-list-item fas fa-search" href="#"></a>
+                <a data-item="8" class="header-list-item" href="#">contact</a>
+                <span class="header-list-item fas fa-search" href="#"></span>
             </div>
         </div>
     </section>
@@ -65,9 +65,9 @@
 
 <!--service-->
 <section data-item-information="2" class="service container">
-    <h2 class="label-section service-label">Our Services</h2>
-    <div class="double-lines service-double-lines"></div>
-    <div id="ourServices">
+    <h2 class="label-section">Our Services</h2>
+    <div class="double-lines"></div>
+    <div id="ourServices" class="our-services">
         <a href="#" data-number="0" class="service-items-link service-items-link-check">Web Design</a>
         <a href="#" data-number="1" class="service-items-link">Graphic Design</a>
         <a href="#" data-number="2" class="service-items-link">Online Support</a>
@@ -75,8 +75,10 @@
         <a href="#" data-number="4" class="service-items-link">Online Marketing</a>
         <a href="#" data-number="5" class="service-items-link">Seo Service</a>
     </div>
-    <img src="img/web_design/web-design%20(1).jpg" alt="not found img" id="service-information-img">
-    <p id="service-information-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <div class="service-information">
+        <img src="img/web_design/web-design%20(1).jpg" alt="not found img" id="service-information-img" class="service-information-img">
+        <p id="service-information-text" class="service-information-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
 </section>
 
 <!--purchase-block-->
@@ -93,15 +95,15 @@
     <div class="container">
         <h2 class="label-section">Our Amazing Work</h2>
         <div class="double-lines"></div>
-        <div id="work-block-items">
-            <p data-number="0" class="work-block-link work-block-link-check">All</p>
-            <p data-number="1" class="work-block-link">Graphic Design</p>
-            <p data-number="2" class="work-block-link">Web Design</p>
-            <p data-number="3" class="work-block-link">Landing Pages</p>
-            <p data-number="4" class="work-block-link">Wordpress</p>
+        <div id="work-block-items"class="work-block-items">
+            <a href="#" data-number="0" class="work-block-link work-block-link-check">All</a>
+            <a href="#" data-number="1" class="work-block-link">Graphic Design</a>
+            <a href="#" data-number="2" class="work-block-link">Web Design</a>
+            <a href="#" data-number="3" class="work-block-link">Landing Pages</a>
+            <a href="#" data-number="4" class="work-block-link">Wordpress</a>
         </div>
         <!--div в кторый будут загружаться картинки-->
-        <div id="uploading-pictures"></div>
+        <div id="uploading-pictures" class="uploading-pictures"></div>
 
         <div class="container-load">
             <div class="top-left"></div>
@@ -109,7 +111,7 @@
             <div class="bottom-left"></div>
             <div class="bottom-right"></div>
         </div>
-        <div id="work-block-button" class="load-img"><span>+</span><p>load more</p></div>
+        <div id="work-block-button" class="load-img work-block-button"><span>+</span><p>load more</p></div>
     </div>
 </section>
 
@@ -117,121 +119,8 @@
 <section data-item-information="5" class="breaking-news container">
     <h2 class="label-section">Breaking News</h2>
     <div class="double-lines"></div>
-    <div class="container-cards-breaking-news">
-
-        <a href="#" class="card-breaking-news">
-            <div class="card-tools card-top-1">
-                <div class="top-block-date">
-                    <p class="date-day">12</p>
-                    <p class="date-month">Feb</p>
-                </div>
-            </div>
-            <div class="card-bottom">
-                <p class="bottom-title">Amazing Image Post</p>
-                <p class="bottom-owner">By admin</p>
-                <p class="bottom-amount-comment">2 comment</p>
-            </div>
-        </a>
-
-        <a href="#" class="card-breaking-news">
-            <div class="card-tools card-top-2">
-                <div class="top-block-date">
-                    <p class="date-day">12</p>
-                    <p class="date-month">Feb</p>
-                </div>
-            </div>
-            <div class="card-bottom">
-                <p class="bottom-title">Amazing Image Post</p>
-                <p class="bottom-owner">By admin</p>
-                <p class="bottom-amount-comment">2 comment</p>
-            </div>
-        </a>
-
-        <a href="#" class="card-breaking-news">
-            <div class="card-tools card-top-3">
-                <div class="top-block-date">
-                    <p class="date-day">12</p>
-                    <p class="date-month">Feb</p>
-                </div>
-            </div>
-            <div class="card-bottom">
-                <p class="bottom-title">Amazing Image Post</p>
-                <p class="bottom-owner">By admin</p>
-                <p class="bottom-amount-comment">2 comment</p>
-            </div>
-        </a>
-
-        <a href="#" class="card-breaking-news">
-            <div class="card-tools card-top-4">
-                <div class="top-block-date">
-                    <p class="date-day">12</p>
-                    <p class="date-month">Feb</p>
-                </div>
-            </div>
-            <div class="card-bottom">
-                <p class="bottom-title">Amazing Image Post</p>
-                <p class="bottom-owner">By admin</p>
-                <p class="bottom-amount-comment">2 comment</p>
-            </div>
-        </a>
-
-        <a href="#" class="card-breaking-news">
-            <div class="card-tools card-top-5">
-                <div class="top-block-date">
-                    <p class="date-day">12</p>
-                    <p class="date-month">Feb</p>
-                </div>
-            </div>
-            <div class="card-bottom">
-                <p class="bottom-title">Amazing Image Post</p>
-                <p class="bottom-owner">By admin</p>
-                <p class="bottom-amount-comment">2 comment</p>
-            </div>
-        </a>
-
-        <a href="#" class="card-breaking-news">
-            <div class="card-tools card-top-6">
-                <div class="top-block-date">
-                    <p class="date-day">12</p>
-                    <p class="date-month">Feb</p>
-                </div>
-            </div>
-            <div class="card-bottom">
-                <p class="bottom-title">Amazing Image Post</p>
-                <p class="bottom-owner">By admin</p>
-                <p class="bottom-amount-comment">2 comment</p>
-            </div>
-        </a>
-
-        <a href="#" class="card-breaking-news">
-            <div class="card-tools card-top-7">
-                <div class="top-block-date">
-                    <p class="date-day">12</p>
-                    <p class="date-month">Feb</p>
-                </div>
-            </div>
-            <div class="card-bottom">
-                <p class="bottom-title">Amazing Image Post</p>
-                <p class="bottom-owner">By admin</p>
-                <p class="bottom-amount-comment">2 comment</p>
-            </div>
-        </a>
-
-        <a href="#" class="card-breaking-news">
-            <div class="card-tools card-top-8">
-                <div class="top-block-date">
-                    <p class="date-day">12</p>
-                    <p class="date-month">Feb</p>
-                </div>
-            </div>
-            <div class="card-bottom">
-                <p class="bottom-title">Amazing Image Post</p>
-                <p class="bottom-owner">By admin</p>
-                <p class="bottom-amount-comment">2 comment</p>
-            </div>
-        </a>
-
-    </div>
+    <!--блок для генерации новостей-->
+    <div id="containerCardsBreakingNews" class="container-cards-breaking-news"></div>
 </section>
 
 <!--what-people-say-->
@@ -240,13 +129,13 @@
         <h2 class="label-section">What People Say About theHam</h2>
         <div class="double-lines"></div>
         <img src="img/what_people_say_about/Forma%201.png" alt="not found" class="very-big-quotes">
-        <p id="descriptionPerson">In computing, a solution stack or software stack is a set of software subsystems or components needed to create a complete platform such that no additional software is needed to support applications. Applications are said to "run on" or "run on top of" the resulting platform.</p>
-        <p id="namePerson">Bob Marty</p>
-        <p id="specialtyPerson">Full Stack</p>
-        <img src="img/what_people_say_about/person%20(3).jpg" alt="not found" id="select-photo">
-        <div id="shiftPhoto">
-            <button id="shiftToLeft">&lsaquo;</button>
-            <div id="slider">
+        <p id="descriptionPerson" class="description-person">In computing, a solution stack or software stack is a set of software subsystems or components needed to create a complete platform such that no additional software is needed to support applications. Applications are said to "run on" or "run on top of" the resulting platform.</p>
+        <p id="namePerson" class="name-person">Bob Marty</p>
+        <p id="specialtyPerson" class="specialty-person">Full Stack</p>
+        <img src="img/what_people_say_about/person%20(3).jpg" alt="not found" id="select-photo" class="select-photo">
+        <div id="shiftPhoto" class="shift-photo">
+            <button id="shiftToLeft" class="shift-to-left">&lsaquo;</button>
+            <div id="slider" class="slider">
                 <div class="direct">
                     <img src="img/what_people_say_about/person%20(1).jpg" data-number-person="0" alt="not found" class="slider-item">
                     <img src="img/what_people_say_about/person%20(2).jpg" data-number-person="1" alt="not found" class="slider-item ">
@@ -260,7 +149,7 @@
                     <img src="img/what_people_say_about/person%20(10).jpg" data-number-person="9" alt="not found" class="slider-item ">
                 </div>
             </div>
-            <button id="shiftToRight">&rsaquo;</button>
+            <button id="shiftToRight" class="shift-to-right">&rsaquo;</button>
         </div>
     </div>
 </section>
@@ -270,9 +159,9 @@
     <h2 class="label-section">Gallery of best images</h2>
     <div class="double-lines"></div>
     <div class="container-plugins">
-        <img src="img/gallery/gallery%20(1).png" class="plugin-item " alt="not found img">
-        <img src="img/gallery/gallery%20(2).png" class="plugin-item " alt="not found img">
-        <div class="plugin-item ">
+        <div class="plugin-item"><img src="img/gallery/gallery%20(1).png" alt="not found img"></div>
+        <div class="plugin-item"><img src="img/gallery/gallery%20(2).png" alt="not found img"></div>
+        <div class="plugin-item">
             <div class=" container-plugin-div-on-two">
                 <img src="img/gallery/gallery%20(3).png" class="plugin-item-div-on-two" alt="not found img">
                 <img src="img/gallery/gallery%20(4).png" class="plugin-item-div-on-two" alt="not found img">
@@ -289,10 +178,9 @@
                 <img src="img/gallery/gallery%20(13).png" class="plugin-item-div-on-tree" alt="not found img">
             </div>
         </div>
-        <img src="img/gallery/gallery%20(14).png" class="plugin-item " alt="not found img">
-        <img src="img/gallery/gallery%20(15).png" class="plugin-item " alt="not found img">
-        <img src="img/gallery/gallery%20(16).png" class="plugin-item " alt="not found img">
-
+        <div class="plugin-item"><img src="img/gallery/gallery%20(14).png" alt="not found img"></div>
+        <div class="plugin-item"><img src="img/gallery/gallery%20(15).png" alt="not found img"></div>
+        <div class="plugin-item"><img src="img/gallery/gallery%20(16).png" alt="not found img"></div>
 
     </div>
     <div class="container-load">
@@ -305,7 +193,7 @@
 </section>
 
 <!--Footer-->
-<footer class="footer">
+<footer data-item-information="8" class="footer">
     <p class="footer-title">© Copyright 2015 <span class="footer-title-redid">theHam </span> | All Rights Reserved</p>
 </footer>
 

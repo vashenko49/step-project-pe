@@ -117,9 +117,9 @@ function eventButtonGeneralLoad(containerLoadAccount,countPutButton,button, call
             countPutButton=0;
         }
     },3500);
-    return countPutButton;
 }
 //генерация путей к картинкам
+//%20 исправлю как только найду прогу для удобного переименовния, пока что использовал стандартный windowса
 function getSrcImgInFolder(folder,nameImg,amountImg,format){
     let array = [];
     for(let i =0;i<amountImg;i++){
@@ -178,7 +178,7 @@ window.onload = function () {
     });
     //событие на клик кнопки подгрузки фото
     workBlockButton.addEventListener('click', function () {
-        countNumberGallery = countNumberGallery=eventButtonGeneralLoad(0,countNumberWork,workBlockButton,function(){
+        countNumberGallery=eventButtonGeneralLoad(0,countNumberWork,workBlockButton,function(){
             countNumberWork++;
             addImages();
         });
@@ -259,7 +259,7 @@ window.onload = function () {
     });
     galleryBlockButton= document.querySelector('#gallery-block-button');
     galleryBlockButton.addEventListener( 'click', function() {
-        countNumberGallery = countNumberGallery=eventButtonGeneralLoad(1,countNumberGallery,galleryBlockButton,function(){
+        eventButtonGeneralLoad(1,countNumberGallery,galleryBlockButton,function(){
             countNumberGallery++;
             $container.masonryImagesReveal(getItems());
         });
