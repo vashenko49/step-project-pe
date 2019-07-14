@@ -103,7 +103,22 @@ const ourServicesItemsInformation = [
             "img/what_people_say_about/person%20(10).jpg"
         ]
     ];
-
+//функция создана на две похожые кнопки
+function eventButtonGeneralLoad(containerLoadAccount,countPutButton,button, callBackFunction){
+    button.style.display = "none";
+    containerLoad[containerLoadAccount].style.display ='block';
+    setTimeout(function () {
+        containerLoad[containerLoadAccount].style.display ='none';
+        callBackFunction();
+        if(countPutButton===0) {
+            button.style.display = "flex";
+        }
+        else {
+            countPutButton=0;
+        }
+    },3500);
+    return countPutButton;
+}
 //генерация путей к картинкам
 function getSrcImgInFolder(folder,nameImg,amountImg,format){
     let array = [];
@@ -116,21 +131,19 @@ function getSrcImgInFolder(folder,nameImg,amountImg,format){
 window.onload = function () {
     //запуск параллакса который подключен плагином в тз не указываеться по личной инициативе
     $("[data-paroller-factor]").paroller();
-
     //region service block
     ourServices = document.getElementById('ourServices');
     //событие на выбор табки
+    function selectTabs(targetElement,activeClass){
+        let lastActiveElement = document.querySelector(`.${activeClass}`);
+        if(lastActiveElement){
+            lastActiveElement.classList.remove(activeClass);
+            targetElement.classList.add(activeClass);
+        }
+    }
     ourServices.addEventListener('click', function (event) {
         let target =event.target;
-        let children = ourServices.children;
-        for(let i =0;i<ourServices.childElementCount;i++){
-            children[i].classList.forEach((elem)=>{
-                if(elem==='service-items-link-check'){
-                    children[i].classList.remove('service-items-link-check');
-                }
-            })
-        }
-        target.classList.add('service-items-link-check');
+        selectTabs(target,'service-items-link-check');
         document.getElementById('service-information-img').src = ourServicesItemsInformation[+target.dataset.number].img;
         document.getElementById('service-information-text').innerHTML =ourServicesItemsInformation[+target.dataset.number].text;
         event.preventDefault();
@@ -153,15 +166,7 @@ window.onload = function () {
     //событие на выбор категории
     workBlockItems.addEventListener('click',function (event) {
         let target = event.target;
-        let children = workBlockItems.children;
-        for(let i =0;i<workBlockItems.childElementCount;i++){
-            children[i].classList.forEach((elem)=>{
-                if(elem==='work-block-link-check'){
-                    children[i].classList.remove('work-block-link-check');
-                }
-            })
-        }
-        target.classList.add('work-block-link-check');
+        selectTabs(target,'work-block-link-check');
         dataSetNumberCurrent = +target.dataset.number;
         workBlockButton.style.display = "flex";
         if(dataSetNumberCurrent===0){
@@ -173,19 +178,10 @@ window.onload = function () {
     });
     //событие на клик кнопки подгрузки фото
     workBlockButton.addEventListener('click', function () {
-        workBlockButton.style.display = "none";
-        containerLoad[0].style.display ='block';
-        setTimeout(function () {
-            containerLoad[0].style.display ='none';
-            addImages(dataSetNumberCurrent);
-            if(countNumberWork===0) {
-                workBlockButton.style.display = "flex";
-                countNumberWork++;
-            }
-            else {
-                countNumberWork=0;
-            }
-        },3500);
+        countNumberGallery = countNumberGallery=eventButtonGeneralLoad(0,countNumberWork,workBlockButton,function(){
+            countNumberWork++;
+            addImages();
+        });
     });
     //загрузка фото при первой загрузке фото
     generationAllCategoryImg();
@@ -207,7 +203,6 @@ window.onload = function () {
             updateInformationAboutPerson(+target.dataset.numberPerson)
         }
     });
-
     shiftToLeft.addEventListener('click',function (event) {
         let target = event.target;
         if(shiftToRight.classList.contains('finish-direction')){
@@ -264,20 +259,10 @@ window.onload = function () {
     });
     galleryBlockButton= document.querySelector('#gallery-block-button');
     galleryBlockButton.addEventListener( 'click', function() {
-        galleryBlockButton.style.display = "none";
-        containerLoad[1].style.display ='block';
-        let timer = setTimeout(function () {
-            containerLoad[1].style.display ='none';
+        countNumberGallery = countNumberGallery=eventButtonGeneralLoad(1,countNumberGallery,galleryBlockButton,function(){
+            countNumberGallery++;
             $container.masonryImagesReveal(getItems());
-            if(countNumberGallery===0) {
-                galleryBlockButton.style.display = "flex";
-                countNumberGallery++;
-            }
-            else {
-                countNumberGallery=0;
-            }
-        },3500);
-
+        });
     });
     /*end region gallery*/
 
@@ -462,7 +447,6 @@ function createElementBreakingNews(src) {
 
     return card;
 }
-
 function generationNewsCards(elementWhereToInsert,arraySrc) {
     arraySrc.forEach((element)=>{
         elementWhereToInsert.append(createElementBreakingNews(element));
