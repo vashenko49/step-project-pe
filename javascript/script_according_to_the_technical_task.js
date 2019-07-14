@@ -178,7 +178,7 @@ window.onload = function () {
     });
     //событие на клик кнопки подгрузки фото
     workBlockButton.addEventListener('click', function () {
-        countNumberGallery=eventButtonGeneralLoad(0,countNumberWork,workBlockButton,function(){
+        eventButtonGeneralLoad(0,countNumberWork,workBlockButton,function(){
             countNumberWork++;
             addImages();
         });
