@@ -19,6 +19,9 @@ body{
     border-bottom-color: #18cfab;
     transform: skew(50deg);
 }
+.fa-search{
+    cursor: pointer;
+}
 /*end region general options*/
 
 
@@ -30,7 +33,7 @@ body{
 
 /*region header*/
     /*region hexagon*/
-#hexagon {
+.hexagon {
     width: 58px;
     height: 33px;
     background: #18cfab;
@@ -39,7 +42,7 @@ body{
     justify-content: center;
     align-items: center;
 }
-#hexagon:before {
+.hexagon:before {
     content: "";
     position: absolute;
     top: -15px;
@@ -50,7 +53,7 @@ body{
     border-right: 29px solid transparent;
     border-bottom: 15px solid #18cfab;
 }
-#hexagon:after {
+.hexagon:after {
     content: "";
     position: absolute;
     bottom: -15px;
@@ -107,25 +110,13 @@ body{
 
 /*region home-block*/
 .home-block{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-template-rows: 35px 76px 40px 200px;
-    grid-template-areas:
-            "pre-slogan pre-slogan"
-            "main-slogan main-slogan"
-            "next-slogan next-slogan"
-            "button-color-green button-color-blue";
-    grid-row-gap: 35px;
-    grid-column-gap: 25px;
-    justify-content: center;
-    justify-items: center;
+    text-align: center;
     padding: 235px 0 235px 0;
 }
 .pre-slogan, .main-slogan{
     color: white;
 }
 .pre-slogan{
-    grid-area: pre-slogan;
     font-size: 35px;
     font-weight: bold;
 }
@@ -133,15 +124,14 @@ body{
     color: #18cfab;
 }
 .main-slogan{
-    grid-area: main-slogan;
     font-size: 79px;
     text-transform: uppercase;
 }
 .next-slogan{
-    grid-area: next-slogan;
     font-size: 34px;
     font-weight: lighter;
     color: #d4d4d4;
+    padding-bottom: 137px;
 }
 .button{
     display: inline-block;
@@ -153,12 +143,8 @@ body{
     color: aliceblue;
     text-transform: uppercase;
 }
-.button-color-blue ,.button-color-green{
-    align-self: end;
-}
 .button-color-green{
     grid-area: button-color-green;
-    justify-self: end;
     background-color: #18cfab;
     transition: color, border-top-color, background-color 0.5s;
 }
@@ -169,7 +155,6 @@ body{
 }
 .button-color-blue{
     grid-area: button-color-blue;
-    justify-self: start;
     background-color: #00cbf6;
     transition: color, border-top-color, background-color 0.5s;
 }
@@ -231,28 +216,14 @@ body{
 /*region service*/
 .service{
     padding: 80px 0 80px 0;
-    display: grid;
-    grid-template-columns: 190px 1fr;
-    grid-template-rows: 48px 48px 74px 1fr;
-    grid-template-areas: "service-label service-label"
-    "service-double-lines service-double-lines"
-    "ourServices ourServices"
-    "service-information-img service-information-text";
-    grid-row-gap: 25px;
-    grid-column-gap: 20px;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    justify-items: center;
     align-items: center;
 }
-.service-label{
-    grid-area: service-label;
-}
-.service-double-lines{
-    grid-area: service-double-lines;
-}
-#ourServices{
+
+.our-services{
     width: inherit;
-    grid-area: ourServices;
     display: flex;
     justify-content: space-around;
 }
@@ -297,15 +268,22 @@ body{
     z-index: 3;
 
 }
-#service-information-img{
-    grid-area: service-information-img;
+.service-information{
+    display: flex;
+    align-items: flex-start;
+    padding-top:26px ;
+}
+.service-information-img{
+    padding-right: 20px;
     object-fit: fill;
     width: 194px;
     height: 139px;
 }
-#service-information-text{
-    grid-area: service-information-text;
+.service-information-text{
+    color:#777777;
+    font-size: 14px;
 }
+
 /*end region service*/
 
 /*region purchase-block*/
@@ -313,19 +291,13 @@ body{
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)) ,url("../img/sections_background/section-2.jpg") repeat center;;
 }
 .purchase-block>.container{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3,1fr);
-    grid-template-areas:
-            "purchase-block-slogan"
-            "purchase-block-text"
-            "button-color-green";
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 125px 0 125px 0;
 }
 .purchase-block-slogan{
-    grid-area: purchase-block-slogan;
     font-size: 40px;
     font-weight: bold;
     color: #18cfab;
@@ -333,13 +305,11 @@ body{
     margin-bottom: 30px;
 }
 .purchase-block-text{
-    grid-area: purchase-block-text;
     color: #cdcccc;
     font-size: 16px;
     margin-bottom: 70px;
 }
 .purchase-button{
-    justify-self: center;
 }
 /*end region purchase-block*/
 
@@ -361,7 +331,7 @@ body{
 .container>.double-lines{
     margin-bottom: 57px;
 }
-#work-block-items{
+.work-block-items{
     border: 1px solid #ebebeb;
     background-color: #fff;
     display: flex;
@@ -388,7 +358,7 @@ body{
     box-shadow: 0 -2px 0 0 #18cfab;
     color: #18cfab;
 }
-#uploading-pictures{
+.uploading-pictures{
     display: grid;
     grid-template-columns: repeat(4,1fr);
     justify-content: center;
@@ -473,7 +443,7 @@ body{
 .card:hover .back {
     transform: rotateY(360deg);
 }
-#work-block-button{
+.work-block-button{
     margin-bottom: 60px ;
 }
 .load-img{
@@ -643,11 +613,10 @@ body{
 .card-tools {
     width: 263px;
     height: 208px;
-    display: flex;
-    justify-content: flex-end;
+    position: relative;
 }
 .card-top-1{
-    background-image: url("../img/brealing_news/Layer 47.png");
+
 }
 .card-top-2{
     background-image: url("../img/brealing_news/Layer 50.png");
@@ -679,6 +648,9 @@ body{
     align-items: center;
     justify-content: center;
     background: #203e38;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 .date-day,.date-month{
     color: white;
@@ -744,44 +716,46 @@ body{
     object-fit: cover;
     margin-bottom: 40px;
 }
-#descriptionPerson, #specialtyPerson{
+.description-person, .specialty-person{
     color: white;
     font-size: 16px;
     margin-bottom: 36px;
 }
-#namePerson{
+.name-person{
     color: #18cfab;
     font-size: 20px;
     margin-bottom: 8px;
 }
-#select-photo,.slider-item{
+.select-photo,.slider-item{
     border-radius: 50%;
     object-fit: cover;
 }
-#select-photo{
+.select-photo{
     width: 140px;
     height: 140px;
     border: 2px solid #18cfab;
     box-shadow: 0 0 0 11px rgba(210,248,240,0.3);
     margin-bottom: 51px;
 }
-#shiftPhoto{
+.shift-photo{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#shiftToRight,#shiftToLeft{
+.shift-to-right,.shift-to-left{
     width: 30px;
     height: 30px;
     background: rgba(0,0,0,0);
     border: 1px solid white;
     color: white;
+    padding-bottom: 5px;
+    outline: 0;
 }
-#shiftToRight:hover,#shiftToLeft:hover{
+.finish-direction, .shift-to-right:hover, .shift-to-left:hover{
     background: #18cfab;
     border-color:#18cfab ;
 }
-#slider{
+.slider{
     width: 368px;
     overflow: hidden;
 }

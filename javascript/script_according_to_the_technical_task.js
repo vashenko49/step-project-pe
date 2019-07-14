@@ -17,7 +17,11 @@ let ourServices,
     galleryBlockButton,
     imagGallery,
     partImg=17,
-    countNumberGallery=0;
+    countNumberGallery=0,
+    $dataItem,
+    $dataInformation,
+    srcBreakNews,
+    containerCardsBreakingNews;
 
 //массив объектов для service block
 const ourServicesItemsInformation = [
@@ -203,44 +207,41 @@ window.onload = function () {
             updateInformationAboutPerson(+target.dataset.numberPerson)
         }
     });
-    shiftToLeft.addEventListener('click',function () {
+
+    shiftToLeft.addEventListener('click',function (event) {
+        let target = event.target;
+        if(shiftToRight.classList.contains('finish-direction')){
+            shiftToRight.classList.remove('finish-direction')
+        }
         let activeElement = document.querySelector('.slider-item-select');
         if(activeElement.previousElementSibling){
+            target.classList.remove('finish-direction');
             removeSelectClasses('slider-item', 'slider-item-select');
             activeElement.previousElementSibling.classList.add('slider-item-select');
             updateInformationAboutPerson(+activeElement.previousElementSibling.dataset.numberPerson)
         }
-        let shift = 0;
-        let timerLeft = setInterval(function () {
-            if(shift>(slider.firstElementChild.offsetWidth/slider.firstElementChild.childElementCount)-2){
-                clearInterval(timerLeft);
-                return false;
-            }
-            else {
-                slider.scrollLeft-=5;
-                shift+=5;
-            }
-        },20);
-
+        else {
+            target.classList.add('finish-direction');
+        }
+        shiftDirection(false);
     });
-    shiftToRight.addEventListener('click',function () {
+    shiftToRight.addEventListener('click',function (event) {
+        let target = event.target;
+        if(shiftToLeft.classList.contains('finish-direction')){
+            shiftToLeft.classList.remove('finish-direction')
+        }
         let activeElement = document.querySelector('.slider-item-select');
         if(activeElement.nextElementSibling){
+            target.classList.remove('finish-direction');
             removeSelectClasses('slider-item', 'slider-item-select');
             activeElement.nextElementSibling.classList.add('slider-item-select');
             updateInformationAboutPerson(+activeElement.nextElementSibling.dataset.numberPerson)
         }
-        let shift = 0;
-        let timerLeft = setInterval(function () {
-            if(shift>(slider.firstElementChild.offsetWidth/slider.firstElementChild.childElementCount)-2){
-                clearInterval(timerLeft);
-                return false;
-            }
-            else {
-                slider.scrollLeft+=5;
-                shift+=5;
-            }
-        },20);
+        else {
+            target.classList.add('finish-direction');
+        }
+
+        shiftDirection(true);
     });
     /*end region what-people-say*/
 
@@ -280,6 +281,21 @@ window.onload = function () {
     });
     /*end region gallery*/
 
+    /*region scroll */
+    $dataItem = $('[data-item]');
+    $dataInformation = $('[data-item-information]');
+    $dataItem.on('click',function (event) {
+        let heightScroll = $dataInformation.eq(($(event.target).data('item')).toString()).offset().top;
+        if(heightScroll)
+            $('html, body').animate({scrollTop: heightScroll},1200)
+    });
+    /*end region scroll */
+
+    /*region breaking news*/
+    srcBreakNews= getSrcImgInFolder('brealing_news','news',8,'png');
+    containerCardsBreakingNews = document.getElementById('containerCardsBreakingNews');
+    generationNewsCards(containerCardsBreakingNews,srcBreakNews);
+    /*end region breaking news*/
 };
 //region work block
 //зачищает блок
@@ -413,8 +429,64 @@ function generationCard(category,src) {
 }
 //end region work block
 
+/*region breaking news*/
+function createElementBreakingNews(src) {
+    let card = createElement('a',['card-breaking-news']);
+    let firstDiv = createElement('div',["card-tools"]);
+    let imgInFirstDiv = createElement('img');
+    imgInFirstDiv.alt='not found';
+    imgInFirstDiv.src=src;
+    let divInFirstDiv = createElement('div',['top-block-date']);
+    let firstpInDivInFirstDiv = createElement('p',['date-day']);
+    firstpInDivInFirstDiv.innerHTML = '12';
+    let secondPInDivInFirstDiv = createElement('p',['date-month']);
+    secondPInDivInFirstDiv.innerHTML='Feb';
+    divInFirstDiv.append(firstpInDivInFirstDiv);
+    divInFirstDiv.append(secondPInDivInFirstDiv);
+    firstDiv.append(imgInFirstDiv);
+    firstDiv.append(divInFirstDiv);
+
+    let secondDiv = createElement('div',['card-bottom']);
+    let pFirstInsecondDiv = createElement('p',['bottom-title']);
+    pFirstInsecondDiv.innerHTML = 'Amazing Image Post';
+    let pSecondInsecondDiv = createElement('p',['bottom-owner']);
+    pSecondInsecondDiv.innerHTML='By admin';
+    let pThirdInsecondDiv = createElement('p',['bottom-amount-comment']);
+    pThirdInsecondDiv.innerHTML='2 comment';
+    secondDiv.append(pFirstInsecondDiv);
+    secondDiv.append(pSecondInsecondDiv);
+    secondDiv.append(pThirdInsecondDiv);
+
+    card.append(firstDiv);
+    card.append(secondDiv);
+
+    return card;
+}
+
+function generationNewsCards(elementWhereToInsert,arraySrc) {
+    arraySrc.forEach((element)=>{
+        elementWhereToInsert.append(createElementBreakingNews(element));
+    })
+}
+/*end region breaking news*/
 
 /*region what-people-say*/
+//двигает
+function shiftDirection(direction){
+    /*direction: false-left, true-right*/
+    let shift = 0;
+    let timerLeft = setInterval(function () {
+        if(shift>(slider.firstElementChild.offsetWidth/slider.firstElementChild.childElementCount)-2){
+            clearInterval(timerLeft);
+            return false;
+        }
+        else {
+            direction?slider.scrollLeft+=5:slider.scrollLeft-=5;
+            shift+=5;
+        }
+    },20);
+
+}
 /*меняет текст в элементе*/
 function updateHTMLTEXT(element,index,number) {
     element.innerHTML = informationAboutPeople[index][number];
@@ -452,14 +524,11 @@ $.fn.masonryImagesReveal = function( $items ) {
 
     return this;
 };
-
-
 function createGalleryIMG() {
     let item = `<div class="plugin-item"><img src="img/gallery/gallery%20(${partImg}).png" alt="img not found"/></div>`;
     partImg++;
     return item;
 }
-
 function getItems() {
     let items = '';
     for ( var i=0; i < 10&&partImg<36; i++ ) {
