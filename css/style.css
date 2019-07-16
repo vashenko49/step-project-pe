@@ -1,6 +1,7 @@
 /*region general options*/
 body{
     font-family: "Montserrat",sans-serif;
+    min-width: 1200px;
 }
 .container{
     width: 1200px;
